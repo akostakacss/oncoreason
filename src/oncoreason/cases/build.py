@@ -18,13 +18,13 @@ from ..datasources import EvidenceKind, EvidenceQuery
 from .qc import run_qc
 from .schema import Alteration, Case, ClinicalContext, GoldRecommendation, Split
 
-# study id -> tumor type for the case context (the one clinical field we trust: histology)
+# study id -> tumor type for the case context (the one clinical field I trust: histology)
 _STUDY_TUMOR_TYPE = {
     "luad_tcga_pan_can_atlas_2018": "lung adenocarcinoma",
     "lusc_tcga_pan_can_atlas_2018": "lung squamous cell carcinoma",
 }
 
-# QC checks whose records we DROP (they corrupt aggregation) vs. those we keep-but-flag.
+# QC checks whose records I DROP (they corrupt aggregation) vs. those I keep-but-flag.
 _DROP_CHECKS = {"duplicate_row", "vaf_zero_alt"}
 
 

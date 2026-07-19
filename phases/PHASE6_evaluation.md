@@ -79,15 +79,15 @@ correlates *positively* with accuracy for LLM agents. Here, cases with more evid
 often wrong. The explanation is that in a deterministic system "more evidence" does not mean
 better information gathering, it means a harder multi-alteration case where competing and
 tumor-mismatched evidence accumulates and degrades the adjudication. Their metric, imported
-unchanged, exposed a weakness of our synthesizer.
+unchanged, exposed a weakness of my synthesizer.
 
 **6. 90/223 redundant and 72/223 empty tool calls** is a real inefficiency. Note the metric
 counts redundancy globally across traces, so the same gene queried for different patients counts
 as redundant; that definition is generous and should be tightened before it is quoted.
 
-## Trade-offs, and what we did not do
+## Trade-offs, and what I did not do
 
-| Decision | Alternative | Why we chose this |
+| Decision | Alternative | Why I chose this |
 |---|---|---|
 | **Bootstrap CIs on everything** | point estimates | At n = 50 a bare rate is close to meaningless. Costs nothing on CPU and is the honest presentation. |
 | **Guideline-derived gold** | MTB-derived gold; expert re-annotation | No non-circular gold existed when this was built. Now **MTBBench** supplies one, and adopting it is the top backlog item (see `docs/MTBBENCH_INTEGRATION.md`). Chose to ship with the circular label *plus a loud caveat* rather than have no outcome metric. |

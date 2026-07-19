@@ -62,9 +62,9 @@ its own system and reported both plainly. That is easy to lose if the front page
 results table instead of a claim that has been checked. This phase makes that the first thing a
 reviewer sees rather than something they find on page four.
 
-## Trade-offs, and what we did not do
+## Trade-offs, and what I did not do
 
-| Decision | Alternative | Why we chose this |
+| Decision | Alternative | Why I chose this |
 |---|---|---|
 | **Edit pass over existing artifacts** | Generate a new summary report / dashboard | A new document is one more place for the numbers to drift from the code. Editing `README.md` and re-verifying against `results/*.json` keeps a single source of truth. |
 | **Re-run everything fresh before writing this doc** | Trust the numbers already written in Phase 5/6 | Cheap to do (CPU, seconds) and directly on-brand for a project whose thesis is "verify before you claim." |

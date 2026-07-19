@@ -50,10 +50,10 @@ trial id) is correctly labelled **unsound** — the verifier discriminates, it d
 
 This is the exact mechanism behind the two Moor-lab backbone papers:
 - **Med-PRM** — labels each step against *retrieved* evidence (RAG-as-a-Judge); reports expert
-  agreement (kappa 0.74/0.71). Our labeller is the same idea; the audit kappa is the honest
+  agreement (kappa 0.74/0.71). My labeller is the same idea; the audit kappa is the honest
   number to report once a human subset is scored.
 - **PRA (2026)** — the online successor that steers a *frozen* policy with these step rewards.
-  Our labels → Phase-5 PRM → Best-of-N is the Med-PRM rung; a PRA-style online reward agent is
+  My labels → Phase-5 PRM → Best-of-N is the Med-PRM rung; a PRA-style online reward agent is
   the documented roadmap.
 
 See [`../publications/REFERENCES.md`](../publications/REFERENCES.md) for the source papers.

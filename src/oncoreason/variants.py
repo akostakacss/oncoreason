@@ -38,7 +38,7 @@ _AA_3TO1 = {
 _AA_1TO3 = {v: k for k, v in _AA_3TO1.items() if v not in ("U", "X")}
 
 _THREE_RE = re.compile("|".join(sorted(_AA_3TO1, key=len, reverse=True)))
-# one-letter substitution: <AA><pos><AA|*>, the only form we round-trip to three-letter.
+# one-letter substitution: <AA><pos><AA|*>, the only form I round-trip to three-letter.
 _SUBST_RE = re.compile(r"^([ACDEFGHIKLMNPQRSTVWY])(\d+)([ACDEFGHIKLMNPQRSTVWY*])$")
 
 

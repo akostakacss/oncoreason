@@ -119,7 +119,7 @@ def main() -> None:
           f"(T={report.temperature:.2f})")
 
     trace_scores = {t.case_id: score_trace_with_prm(prm, t) for t in traces}
-    # Best-of-N needs >1 candidate per case; with one deterministic trace each we report the
+    # Best-of-N needs >1 candidate per case; with one deterministic trace each I report the
     # machinery and the score distribution rather than a fabricated N-sample comparison.
     bo_best, bo_scores = best_of_n(prm, traces)
     pairs = build_dpo_pairs(prm, {"all": traces})

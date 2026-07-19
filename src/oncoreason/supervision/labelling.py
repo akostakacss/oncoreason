@@ -101,9 +101,9 @@ def mine_negatives(examples: list[dict], seed: int = 17,
     retrievals, so every step it produces is grounded by construction and the label
     distribution is degenerate (100% sound). A verifier trained on that has no signal. Real
     negatives appear once a *generative* policy can hallucinate a citation, which is the GPU
-    path; until then we mine them counterfactually.
+    path; until then I mine them counterfactually.
 
-    Both strategies mirror failure modes we actually care about and have already observed:
+    Both strategies mirror failure modes I actually care about and have already observed:
 
       - ``strip``: same claim, citations removed -> an assertion with no supporting record.
       - ``swap``: citations replaced with ids drawn from a *different* case -> evidence that

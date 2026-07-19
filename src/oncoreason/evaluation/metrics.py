@@ -288,8 +288,8 @@ def information_gathering(traces: list[Trace], cases: list[Case]) -> dict:
     *more strongly than model scale does*: "effective information gathering, rather than raw
     scale, is a key determinant of accuracy."
 
-    Our analogue of "files accessed" is evidence actually retrieved: distinct citations plus
-    non-empty tool calls. We report the point-biserial correlation with correctness, and the
+    My analogue of "files accessed" is evidence actually retrieved: distinct citations plus
+    non-empty tool calls. I report the point-biserial correlation with correctness, and the
     mean evidence gathered for correct vs incorrect cases. A near-zero or negative
     correlation is itself informative: it means the agent is retrieving without benefiting,
     which is the failure mode this metric exists to expose.

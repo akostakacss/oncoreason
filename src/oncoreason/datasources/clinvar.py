@@ -3,8 +3,8 @@
 ClinVar's job here is the **germline pathogenicity** classification, deliberately separate
 from CIViC's somatic *therapeutic* evidence — pooling them is a category error a clinician
 spots instantly. Since ClinVar's 2024 restructure a record carries up to three independent
-classifications; we surface the germline one and keep the others in the payload:
-  - ``germline_classification``     -> our primary Evidence (kind=PATHOGENICITY)
+classifications; I surface the germline one and keep the others in the payload:
+  - ``germline_classification``     -> the primary Evidence (kind=PATHOGENICITY)
   - ``oncogenicity_classification`` -> payload (Oncogenic/Benign/…)
   - ``somatic_clinical_impact``     -> payload
 
@@ -12,7 +12,7 @@ Review status matters as much as the label: "reviewed by expert panel" (3★) is
 as "no assertion criteria" (0★), so it is carried on every item.
 
 Joining, not re-spelling (see the identity-standards note): the primary entry point is
-``by_ids`` using the ClinVar Variation IDs CIViC already hands us (``clinvarIds``). The
+``by_ids`` using the ClinVar Variation IDs CIViC already provides (``clinvarIds``). The
 ``retrieve`` fallback searches by gene + the three-letter HGVS protein form (``p.Leu858Arg``)
 that ClinVar indexes — produced by ``variants.one_to_three``. The record's Entrez ``geneid``
 is captured as the gene-level join key.

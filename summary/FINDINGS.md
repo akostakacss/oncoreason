@@ -1,7 +1,7 @@
 # Findings — what each phase actually found
 
 This is the evaluative summary: not what was built (that's [`phases/`](../phases/)) but **what
-we found out** at each stage, and how good or bad news it was. Read this first; go to the
+I found out** at each stage, and how good or bad news it was. Read this first; go to the
 per-phase document linked in each section for the method, the numbers, and the trade-offs.
 
 The one-page visual companion to this document is [`results_figure.png`](results_figure.png)
@@ -40,11 +40,11 @@ than left implicit:
   is scoped against.
 
 The source papers are listed in [`publications/REFERENCES.md`](../publications/REFERENCES.md). Where the
-sections below say "the harness caught X" or "we built Y," read that as *applying methods from
+sections below say "the harness caught X" or "I built Y," read that as *applying methods from
 the papers above within a small demonstration*, not as a claim of new science. What is genuinely
-this author's own contribution is narrower and stated plainly: the specific engineering of a
+my own contribution is narrower and stated plainly: the specific engineering of a
 small, honest, reproducible pipeline that applies these ideas to lung-cancer molecular
-interpretation, and the clinical and biostatistics judgment — from the author's own doctoral and
+interpretation, and the clinical and biostatistics judgment — from my own doctoral and
 clinical-research background — brought to the evaluation design.
 
 ## Phase-by-phase

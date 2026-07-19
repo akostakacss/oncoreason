@@ -11,7 +11,7 @@ Design notes:
 - Variant strings are normalized (Gate 3) before querying — CIViC writes ``L858R``, callers
   may pass ``p.L858R`` / ``p.Leu858Arg``. See ``oncoreason.variants``.
 - Results are cached on disk (CC0 data, safe to keep) so a given query is reproducible and
-  we don't hammer the public API. Delete the cache dir to refresh.
+  I don't hammer the public API. Delete the cache dir to refresh.
 - ``variantOrigin`` sets ``is_somatic`` per item, keeping germline (PREDISPOSING) items
   honestly separated from somatic therapeutic evidence downstream.
 
@@ -30,7 +30,7 @@ from .base import DataSource, Evidence, EvidenceKind, EvidenceQuery
 
 _API_URL = "https://civicdb.org/api/graphql"
 
-# CIViC evidenceType -> our EvidenceKind. Predisposing/oncogenic/functional are about the
+# CIViC evidenceType -> the EvidenceKind. Predisposing/oncogenic/functional are about the
 # variant's nature, mapped to PATHOGENICITY; therapeutic evidence is PREDICTIVE.
 _TYPE_TO_KIND = {
     "PREDICTIVE": EvidenceKind.PREDICTIVE,
@@ -66,7 +66,7 @@ query($mp:String, $first:Int){
 def _canonical_ids(molecular_profile: dict) -> dict:
     """Collect the standard cross-database identifiers CIViC stores on the variant(s).
 
-    The CAID (ClinGen Allele Registry canonical id, e.g. ``CA126713``) is the join key we
+    The CAID (ClinGen Allele Registry canonical id, e.g. ``CA126713``) is the join key I
     use to match the same allele across sources — string re-spelling is NOT the mechanism.
     ClinVar ids and full HGVS descriptions come along for free. Compound profiles (>1 variant)
     contribute all of theirs.

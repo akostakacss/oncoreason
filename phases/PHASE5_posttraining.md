@@ -54,7 +54,7 @@ examples, of which 298 were sound. 100%.** The PRM could not be trained at all: 
 
 This is not a bug, it is a property of the system. A *deterministic* scaffold emits citations
 only from real retrievals, so it **cannot produce an ungrounded step**. Genuine negatives
-require a generative policy that can hallucinate, which is the GPU path we have not run.
+require a generative policy that can hallucinate, which is the GPU path I have not run.
 
 Fix: `supervision.mine_negatives` constructs counterfactual unsound steps by
 - **strip**: same claim, citations removed → an assertion with no supporting record;
@@ -87,13 +87,13 @@ That yields **252 synthetic negatives → 550 examples, 54.3% positive.**
   is not just counting citations or length, which is the standard way this kind of preference
   signal goes wrong.
 
-## Trade-offs, and what we did not do
+## Trade-offs, and what I did not do
 
-| Decision | Alternative | Why we chose this |
+| Decision | Alternative | Why I chose this |
 |---|---|---|
 | **TF-IDF + logistic regression** as the shipped backend | ModernBERT-base fine-tune (the plan's original choice) | `transformers` is unavailable locally and torch is CPU-only. A working baseline that actually trains and is testable in CI beats a transformer path that only runs elsewhere. ModernBERT stays wired behind `backend="modernbert"` for Kaggle. **Cost:** the reported number is a bag-of-ngrams verifier, not a contextual one; it will look different at 8k context. |
-| **Counterfactual negatives** | (a) accept the degenerate labels and skip the PRM; (b) hand-write negatives; (c) wait for policy samples | (a) abandons the core novelty; (b) does not scale and injects the author's priors; (c) blocks all of Phase 5 on GPU access. Counterfactual mining is standard contrastive practice and the two strategies map onto failure modes we have actually observed. **Cost:** synthetic distribution, stated everywhere it is reported. |
-| **min** aggregation | mean, or a learned aggregator | mean hides broken steps; a learned aggregator needs trace-level labels we do not have. `mean` is retained as an ablation switch. |
+| **Counterfactual negatives** | (a) accept the degenerate labels and skip the PRM; (b) hand-write negatives; (c) wait for policy samples | (a) abandons the core novelty; (b) does not scale and injects my own priors; (c) blocks all of Phase 5 on GPU access. Counterfactual mining is standard contrastive practice and the two strategies map onto failure modes I have actually observed. **Cost:** synthetic distribution, stated everywhere it is reported. |
+| **min** aggregation | mean, or a learned aggregator | mean hides broken steps; a learned aggregator needs trace-level labels I do not have. `mean` is retained as an ablation switch. |
 | **Data construction implemented, LoRA training gated** | implement RFT/DPO training loops that cannot run | Selection logic and pair construction carry the intellectual content and are testable; the training call is mechanical `trl` plumbing. Shipping an untested GPU loop would be the overclaiming this project is built to avoid. |
 | **No PPO/GRPO** | full RL | Infeasible on a free T4. GRPO on Alps with the PRM as reward model is the documented scale-up, and it is what RadAgent actually does. |
 

@@ -38,7 +38,7 @@ and lands in `results/`, so none of it is asserted without an artifact behind it
 |---|---|---|
 | PRM held-out accuracy | **0.914** (TP 86 / FP 12 / TN 62 / FN 2) | Real, but on a semi-synthetic distribution — see [Phase 5](phases/PHASE5_posttraining.md). The verifier has never scored actual policy hallucinations. |
 | Guideline concordance | 0.96 top-1 | The **least** meaningful number here: the gold label is derived from the same guideline index the agent retrieves over. Reported with that caveat attached, not as a headline. |
-| **Abstention** | fixed: **0/50 → 24/50** | **The harness found a real bug and we fixed it.** The system never abstained — traced to a strict `<` where a fallback guideline's confidence (0.50) tied the abstain threshold (0.50) exactly. One-character fix; molecular interpretation agreement moved 0.24 → **0.72**. Fixing it surfaced a subtler, still-open finding: 14/38 non-actionable cases still recommend, because they're guideline-backed even without top-tier CIViC evidence — a gold-standard definition gap, not a hallucination. See [Phase 6 addendum](phases/PHASE6_evaluation.md#addendum--the-abstain-threshold-fix). |
+| **Abstention** | fixed: **0/50 → 24/50** | **The harness found a real bug and I fixed it.** The system never abstained — traced to a strict `<` where a fallback guideline's confidence (0.50) tied the abstain threshold (0.50) exactly. One-character fix; molecular interpretation agreement moved 0.24 → **0.72**. Fixing it surfaced a subtler, still-open finding: 14/38 non-actionable cases still recommend, because they're guideline-backed even without top-tier CIViC evidence — a gold-standard definition gap, not a hallucination. See [Phase 6 addendum](phases/PHASE6_evaluation.md#addendum--the-abstain-threshold-fix). |
 | Calibration (ECE) | **0.304** | Poor. Confidence tracks *which guideline branch fired*, not *how likely the answer is to be right*. Stated plainly rather than smoothed over. |
 | Information gathering | r = −0.256 (p = 0.073) | Opposite sign to what MTBBench found for LLM agents — here, more evidence means a harder, more contested case, not better gathering. Diagnosed, not hidden. |
 
@@ -71,7 +71,6 @@ numbers on them cannot drift from the pipeline.
 ## Quickstart (local, CPU)
 
 ```bash
-git init                       # this sandbox lacked git; run it yourself
 python -m venv .venv && source .venv/bin/activate
 pip install -e .               # installs the oncoreason package
 pip install -r requirements.txt

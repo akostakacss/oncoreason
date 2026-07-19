@@ -5,7 +5,7 @@
 NeurIPS 2025, Datasets & Benchmarks. ETH Zürich / EPFL / HUG (Geneva University Hospitals).
 Code: `github.com/bunnelab/MTBBench` · Data: `huggingface.co/datasets/EeshaanJain/MTBBench`
 
-Read in full. This document is the answer to "how do we fold it into the project".
+Read in full. This document is the answer to "how do I fold it into the project".
 
 ---
 
@@ -21,17 +21,17 @@ Of the thirteen papers read, this is the closest to what this project targets, f
 2. **It formalises molecular tumor board practice.** An MTB report interprets an NGS profile
    into a therapy recommendation; MTBBench simulates that deliberation directly. The alignment
    is with clinical practice rather than with any modelling choice.
-3. **It resolves our biggest open methodological problem.** Our gold labels are derived from
-   our own guideline index, which is partially circular (documented in
+3. **It resolves my biggest open methodological problem.** My gold labels are derived from
+   my own guideline index, which is partially circular (documented in
    `supervision.label_case_outcome`). MTBBench provides **clinician-validated, externally
    authored ground truth**, released publicly. It is the non-circular evaluation target the
-   roadmap said we needed and could not find.
+   roadmap said I needed and could not find.
 4. **It runs on Alps under the same programme.** The acknowledgements credit the Swiss AI
    Initiative / CSCS **Alps** allocation, SWISS AI Large Grant No. 46, *"Virtual Patient
    Platform"*. That is the compute environment and the umbrella project this work targets.
 5. **It defines the kaiko interface.** MTBBench exposes **pathology foundation models as
    callable tools** (CONCH for H&E, UNI2 + ABMIL for IHC quantification). That is exactly the
-   socket kaiko's encoders plug into, and exactly the Pattern-A hook our plan reserved.
+   socket kaiko's encoders plug into, and exactly the Pattern-A hook my plan reserved.
 
 ## 2. What the paper actually does
 
@@ -56,42 +56,42 @@ Of the thirteen papers read, this is the closest to what this project targets, f
   - Models "frequently hallucinate, struggle with reasoning from time-resolved data, and fail
     to reconcile conflicting evidence or different modalities."
   - Evaluation uses **bootstrap resampling, 1000 iterations, 95% CIs** — the same small-n
-    discipline our Phase 6 harness already applies.
+    discipline my Phase 6 harness already applies.
 - **Stated next direction** (their conclusion): "integration of medical foundation models with
   capabilities for analyzing complex **longitudinal** data, enabling deeper temporal reasoning
   and personalized decision support."
 
 ## 3. What it changes in this project
 
-### 3.1 It exposes a real gap: we had no time axis
+### 3.1 It exposes a real gap: I had no time axis
 
-Our `Case` was a single timepoint: a molecular profile plus histology. MTBBench (and
+My `Case` was a single timepoint: a molecular profile plus histology. MTBBench (and
 "longitudinal care") makes sequential reasoning central. **Implemented**: `TimelineEvent` and
 `ClinicalTimeline` in `cases/schema.py`, with `Case.timeline`. The important method is
 `ClinicalTimeline.until(t)`, which returns only events at or before *t* — the guard that stops
 future information leaking into a decision that was made before it existed. That is the
-temporal analogue of the patient-level split we already enforce.
+temporal analogue of the patient-level split I already enforce.
 
-### 3.2 It supplies a metric we did not have, and that metric immediately found a fault
+### 3.2 It supplies a metric I did not have, and that metric immediately found a fault
 
-**Implemented**: `evaluation.information_gathering`, our analogue of their files-accessed
+**Implemented**: `evaluation.information_gathering`, my analogue of their files-accessed
 analysis (distinct citations plus non-empty tool calls, correlated with correctness).
 
-Result on our 50 cases: **point-biserial r = −0.256 (p = 0.073)**; mean evidence gathered was
+Result on my 50 cases: **point-biserial r = −0.256 (p = 0.073)**; mean evidence gathered was
 **6.7 when correct** and **13.5 when incorrect**.
 
 The correlation runs *opposite* to MTBBench's. The interpretation is not that they are wrong,
-it is that our system fails differently: in a deterministic scaffold, "more evidence" does not
+it is that my system fails differently: in a deterministic scaffold, "more evidence" does not
 mean "better information gathering", it means "a harder, multi-alteration case where competing
 and tumor-mismatched evidence accumulates". So more evidence degrades the adjudication instead
-of improving it. That is a genuine weakness of our synthesizer, surfaced by importing their
+of improving it. That is a genuine weakness of my synthesizer, surfaced by importing their
 metric, and it is a better thing to report than another number that flatters the system.
 
-### 3.3 It gives us a non-circular evaluation target
+### 3.3 It gives me a non-circular evaluation target
 
-Our guideline-derived gold is partly circular. MTBBench is expert-validated and externally
+My guideline-derived gold is partly circular. MTBBench is expert-validated and externally
 authored. **Planned** (`datasources/mtbbench.py`): a read-only adapter that loads the public
-HuggingFace dataset and maps its QA items onto our `Case`/`Trace` contract so the existing
+HuggingFace dataset and maps its QA items onto my `Case`/`Trace` contract so the existing
 Phase 6 harness can score against it unchanged. Licence discipline applies as everywhere else:
 HANCOCK is CC BY 4.0, the MSK-CHORD-derived track is **CC BY-NC-ND 4.0**, so it is
 research-use, non-commercial, no-derivatives; it goes behind the connector, is never vendored
@@ -109,7 +109,7 @@ at a sentence.
 
 The plan's MTB-concordance item was gated on "do published MTB studies release case-level
 tables?". That gate is now **resolved**: MTBBench releases exactly this. The roadmap item
-changes from *"check whether the data exists"* to *"run our scaffold on MTBBench-Longitudinal
+changes from *"check whether the data exists"* to *"run my scaffold on MTBBench-Longitudinal
 and report kappa against the clinician-validated answers"*, which is a concrete first-year task.
 
 The design notes from the plan still hold and should be carried over: report agreement against

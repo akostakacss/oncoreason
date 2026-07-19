@@ -8,7 +8,7 @@ controlled data (as a licensed lab would have) via empty connector slots — see
 
 Some sources are free to *read* but their content is copyrighted and must not be committed
 to a public repository. The repo therefore stores only **derived representations** of such
-sources (embeddings, chunk indices, or structured recommendations authored by us), never the
+sources (embeddings, chunk indices, or structured recommendations authored by me), never the
 raw text, and loads any raw text at runtime from a git-ignored local path.
 
 ## Source status
