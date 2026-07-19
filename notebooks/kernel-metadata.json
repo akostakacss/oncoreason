@@ -1,0 +1,15 @@
+{
+  "id": "ta1010/gate1-smoke-test",
+  "title": "Gate1 Smoke Test",
+  "code_file": "phase0_gate1_smoke_test.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": true,
+  "enable_gpu": true,
+  "machine_shape": "NvidiaTeslaT4",
+  "enable_internet": true,
+  "model_sources": ["qwen-lm/qwen2.5/transformers/3b-instruct/1"],
+  "dataset_sources": [],
+  "competition_sources": [],
+  "kernel_sources": []
+}

@@ -1,0 +1,14 @@
+{
+ "n_train": 388,
+ "n_test": 162,
+ "n_train_cases": 35,
+ "n_test_cases": 15,
+ "tp": 86,
+ "fp": 12,
+ "tn": 62,
+ "fn": 2,
+ "accuracy": 0.9135802469135802,
+ "temperature": 0.28,
+ "positive_rate": 0.5432098765432098,
+ "notes": []
+}

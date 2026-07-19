@@ -1,0 +1,55 @@
+# ---- controlled / licensed data: NEVER commit -------------------------------
+data/controlled/**
+!data/controlled/.gitkeep
+!data/controlled/README.txt
+# raw copyrighted guideline text (ESMO/NCCN) — derived indices only in repo
+data/public/guidelines_raw/**
+# publications/ pdfs are third-party copyrighted papers — never committed;
+# figures the project generates itself are explicitly kept
+*.pdf
+!roadmap_figure.pdf
+!concept_figure.pdf
+!summary/results_figure.pdf
+
+# ---- personal application materials: NEVER commit ---------------------------
+# CV, cover letter, transcripts — personal documents, not part of the public repo
+application/**
+# personal working notes: strategy, reading lists, glossary and the first-pass build
+# tutorial. Kept locally; the public record of the build lives in phases/ and summary/,
+# and the reading itself in publications/REFERENCES.md.
+PROJECT_PLAN.md
+BUILD_GUIDE.md
+moor_top5_references.txt
+concepts_glossary.docx
+publications/SYNTHESIS.md
+
+# ---- secrets ----------------------------------------------------------------
+.env
+*.key
+kaggle.json
+
+# ---- data & model artifacts (large / regenerable) ---------------------------
+data/public/**
+!data/public/.gitkeep
+data/cases/**
+checkpoints/**
+adapters/**
+*.safetensors
+*.bin
+*.ckpt
+
+# ---- python -----------------------------------------------------------------
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+.ipynb_checkpoints/
+.pytest_cache/
+build/
+dist/
+
+# ---- os / editor ------------------------------------------------------------
+.DS_Store
+.vscode/
+.idea/

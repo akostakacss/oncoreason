@@ -1,0 +1,93 @@
+[
+ {
+  "study_id": "luad_tcga_pan_can_atlas_2018",
+  "n_records": 1087,
+  "n_findings": 7,
+  "by_severity": {
+   "medium": 4,
+   "low": 3
+  },
+  "checks": [
+   "duplicate_row",
+   "type_vs_protein"
+  ],
+  "findings": [
+   {
+    "check": "type_vs_protein",
+    "severity": "medium",
+    "detail": "Frame_Shift_Ins but proteinChange='N133*' looks nonsense",
+    "sample_id": "TCGA-17-Z061-01",
+    "gene": "RB1"
+   },
+   {
+    "check": "type_vs_protein",
+    "severity": "medium",
+    "detail": "Frame_Shift_Ins but proteinChange='E1832*' looks nonsense",
+    "sample_id": "TCGA-49-6767-01",
+    "gene": "NF1"
+   },
+   {
+    "check": "type_vs_protein",
+    "severity": "medium",
+    "detail": "Frame_Shift_Ins but proteinChange='K323*' looks nonsense",
+    "sample_id": "TCGA-55-6970-01",
+    "gene": "KEAP1"
+   },
+   {
+    "check": "type_vs_protein",
+    "severity": "medium",
+    "detail": "Frame_Shift_Del but proteinChange='Y60*' looks nonsense",
+    "sample_id": "TCGA-97-A4M3-01",
+    "gene": "STK11"
+   },
+   {
+    "check": "duplicate_row",
+    "severity": "low",
+    "detail": "2x identical (sample,gene,X126_splice)",
+    "sample_id": "TCGA-17-Z021-01",
+    "gene": null
+   },
+   {
+    "check": "duplicate_row",
+    "severity": "low",
+    "detail": "3x identical (sample,gene,X155_splice)",
+    "sample_id": "TCGA-44-8119-01",
+    "gene": null
+   },
+   {
+    "check": "duplicate_row",
+    "severity": "low",
+    "detail": "2x identical (sample,gene,X143_splice)",
+    "sample_id": "TCGA-73-4659-01",
+    "gene": null
+   }
+  ]
+ },
+ {
+  "study_id": "lusc_tcga_pan_can_atlas_2018",
+  "n_records": 784,
+  "n_findings": 2,
+  "by_severity": {
+   "medium": 2
+  },
+  "checks": [
+   "type_vs_protein"
+  ],
+  "findings": [
+   {
+    "check": "type_vs_protein",
+    "severity": "medium",
+    "detail": "Frame_Shift_Del but proteinChange='S46*' looks nonsense",
+    "sample_id": "TCGA-33-A5GW-01",
+    "gene": "TP53"
+   },
+   {
+    "check": "type_vs_protein",
+    "severity": "medium",
+    "detail": "Frame_Shift_Del but proteinChange='G244*' looks nonsense",
+    "sample_id": "TCGA-77-8143-01",
+    "gene": "TP53"
+   }
+  ]
+ }
+]

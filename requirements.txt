@@ -1,0 +1,35 @@
+# Pinning policy (see risk register): the transformers / trl / peft stack breaks
+# across minor versions. These are FLOORS to get started. FREEZE exact versions
+# from your first green Kaggle run:  `pip freeze > requirements.lock.txt`
+# and commit the lock file. Do not treat these as final.
+
+# --- core ML (used on Kaggle T4) ---
+torch>=2.4
+transformers>=4.44
+accelerate>=0.34
+peft>=0.13            # LoRA / QLoRA adapters
+trl>=0.11            # SFT / DPO trainers
+bitsandbytes>=0.43   # 4-bit quantization (QLoRA fallback if base model too weak)
+datasets>=3.0
+sentence-transformers>=3.0   # dense retrieval encoders (MedCPT / BGE)
+
+# --- retrieval ---
+rank-bm25>=0.2.2     # sparse retrieval baseline
+
+# --- agent / teacher LLM (network, no GPU) ---
+anthropic>=0.40      # Claude API (teacher / agent generation)
+
+# --- bio / variant normalization (Phase 0 Gate 3) ---
+# hgvs and VEP are heavier; add when you reach the normalization spike.
+# hgvs>=1.5
+
+# --- data / config / eval ---
+pyyaml>=6.0
+pydantic>=2.0
+numpy>=1.26
+pandas>=2.0
+scikit-learn>=1.4    # calibration curves, metrics
+scipy>=1.11          # stats, kappa, CIs
+
+# --- dev ---
+pytest>=8.0

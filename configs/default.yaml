@@ -1,0 +1,57 @@
+# Default pipeline config. Everything reproducible flows from here.
+# Freeze exact library versions separately (requirements.lock.txt) after the first
+# green Kaggle run.
+
+seed: 17
+tumor_type: lung           # actionability is tumor-type-specific; keep the PoC narrow
+
+data:
+  n_cases: 250             # ~200-300 target
+  cbioportal_studies: []   # fill from Gate 5 scoping (OPEN lung studies only)
+  splits: { train: 0.6, val: 0.15, test: 0.15, generalization: 0.10 }
+  split_level: case        # NEVER split a case across folds (leakage)
+
+sources:
+  public: [civic, clinvar, cbioportal]
+  controlled: [nccn, oncokb_full, institutional]   # reserved; inert without licensed data
+
+guidelines:
+  framework: ESMO          # + ESCAT actionability tiers
+  version: null            # pin a version to avoid temporal drift
+  store: derived_index     # NEVER commit raw copyrighted text
+
+retrieval:
+  methods: [bm25, dense, hybrid]      # build all three, compare
+  dense_encoder: ncbi/MedCPT-Query-Encoder
+  rrf_k: 60
+  top_k: 10
+
+agent:
+  policy_model: Qwen/Qwen2.5-1.5B-Instruct   # revisit after Gate 1
+  teacher_model: claude-opus-4-8             # data generation only
+  specialists: [variant, guideline, trial, literature]
+  abstain_threshold: 0.5
+
+prm:
+  base_model: answerdotai/ModernBERT-base
+  max_length: 4096
+  epochs: 3
+  temperature_scale: true
+
+posttrain:
+  methods: [rft, dpo]      # compared vs untrained baseline, with CIs
+  lora_r: 16
+  lora_alpha: 32
+  best_of_n: 8
+
+evaluation:                # pre-registered metric set (order = report order)
+  metrics:
+    - guideline_concordance
+    - molecular_interpretation_accuracy
+    - reasoning_step_accuracy
+    - tool_use_reliability
+    - citation_grounding
+    - calibration
+    - deferral_curve
+  bootstrap_ci: true
+  multiple_comparison_correction: holm

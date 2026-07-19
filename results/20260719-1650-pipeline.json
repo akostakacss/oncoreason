@@ -1,0 +1,223 @@
+{
+ "run_at": "2026-07-19T16:50:07",
+ "seed": 17,
+ "n_cases": 50,
+ "n_cases_with_gold": 50,
+ "n_traces": 50,
+ "n_abstained": 0,
+ "step_labels": {
+  "real_sound": 298,
+  "synthetic_negatives": 252,
+  "total": 550
+ },
+ "prm": {
+  "n_train": 388,
+  "n_test": 162,
+  "n_train_cases": 35,
+  "n_test_cases": 15,
+  "tp": 86,
+  "fp": 12,
+  "tn": 62,
+  "fn": 2,
+  "accuracy": 0.9135802469135802,
+  "temperature": 0.28,
+  "positive_rate": 0.5432098765432098,
+  "notes": []
+ },
+ "prm_trace_scores": {
+  "min": 0.4133,
+  "max": 0.963,
+  "mean": 0.7148
+ },
+ "best_of_n_demo": {
+  "selected": "lusc_tcga_pan_can_atlas_2018:TCGA-77-8009-01",
+  "n_candidates": 50
+ },
+ "dpo_pairs": 1,
+ "reward_hacking_check": {
+  "n_pairs": 1,
+  "chosen_longer_frac": 0.0,
+  "chosen_more_cited_frac": 0.0,
+  "suspicious": false,
+  "note": "no strong length/citation bias detected"
+ },
+ "metrics": {
+  "guideline_concordance": {
+   "top1": {
+    "n": 50,
+    "rate": 0.96,
+    "ci95": [
+     0.9,
+     1.0
+    ]
+   },
+   "any_match": {
+    "n": 50,
+    "rate": 1.0,
+    "ci95": [
+     1.0,
+     1.0
+    ]
+   },
+   "skipped_unlabelled": 0
+  },
+  "molecular_interpretation_accuracy": {
+   "agreement": {
+    "n": 50,
+    "rate": 0.24,
+    "ci95": [
+     0.12,
+     0.36
+    ]
+   },
+   "n_actionable_cases": 12
+  },
+  "reasoning_step_accuracy": {
+   "step_soundness": {
+    "n": 298,
+    "rate": 1.0,
+    "ci95": [
+     1.0,
+     1.0
+    ]
+   },
+   "unlabelled_steps": 0
+  },
+  "tool_use_reliability": {
+   "n_calls": 223,
+   "success": {
+    "n": 223,
+    "rate": 1.0,
+    "ci95": [
+     1.0,
+     1.0
+    ]
+   },
+   "median_latency_ms": 0.09,
+   "redundant_calls": 90,
+   "successful_but_empty": 72,
+   "errors": []
+  },
+  "citation_grounding": {
+   "n_citations": 226,
+   "resolved": {
+    "n": 226,
+    "rate": 1.0,
+    "ci95": [
+     1.0,
+     1.0
+    ]
+   }
+  },
+  "calibration": {
+   "n": 50,
+   "brier": {
+    "value": 0.1405,
+    "ci95": [
+     0.1041,
+     0.1778
+    ]
+   },
+   "ece": 0.3044,
+   "reliability_curve": [
+    {
+     "bin": [
+      0.0,
+      0.2
+     ],
+     "n": 0
+    },
+    {
+     "bin": [
+      0.2,
+      0.4
+     ],
+     "n": 0
+    },
+    {
+     "bin": [
+      0.4,
+      0.6
+     ],
+     "n": 24,
+     "mean_confidence": 0.5,
+     "accuracy": 1.0
+    },
+    {
+     "bin": [
+      0.6,
+      0.8
+     ],
+     "n": 2,
+     "mean_confidence": 0.64,
+     "accuracy": 0.0
+    },
+    {
+     "bin": [
+      0.8,
+      1.0
+     ],
+     "n": 24,
+     "mean_confidence": 0.9192,
+     "accuracy": 1.0
+    }
+   ]
+  },
+  "deferral_curve": {
+   "n": 50,
+   "points": [
+    {
+     "threshold": 0.0,
+     "coverage": 1.0,
+     "accuracy": 0.96,
+     "accuracy_ci95": [
+      0.9,
+      1.0
+     ],
+     "n": 50
+    },
+    {
+     "threshold": 0.3,
+     "coverage": 1.0,
+     "accuracy": 0.96,
+     "accuracy_ci95": [
+      0.9,
+      1.0
+     ],
+     "n": 50
+    },
+    {
+     "threshold": 0.5,
+     "coverage": 1.0,
+     "accuracy": 0.96,
+     "accuracy_ci95": [
+      0.9,
+      1.0
+     ],
+     "n": 50
+    },
+    {
+     "threshold": 0.7,
+     "coverage": 0.48,
+     "accuracy": 1.0,
+     "accuracy_ci95": [
+      1.0,
+      1.0
+     ],
+     "n": 24
+    },
+    {
+     "threshold": 0.9,
+     "coverage": 0.28,
+     "accuracy": 1.0,
+     "accuracy_ci95": [
+      1.0,
+      1.0
+     ],
+     "n": 14
+    }
+   ],
+   "accuracy_monotone_in_threshold": true
+  }
+ }
+}
