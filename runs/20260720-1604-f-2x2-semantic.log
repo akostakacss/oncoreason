@@ -1,0 +1,195 @@
+[{"stream_name":"stderr","time":9.729040726000001,"data":"/usr/local/lib/python3.12/dist-packages/nbformat/__init__.py:96: MissingIDFieldWarning: Cell is missing an id field, this will become a hard error in future nbformat versions. You may want to use `normalize()` on your notebooks before validations (available since nbformat 5.1.4). Previous versions of nbformat are fixing this issue transparently, and will stop doing so in the future.\n"}
+,{"stream_name":"stderr","time":9.729113063,"data":"  validate(nb)\n"}
+,{"stream_name":"stderr","time":11.011033667,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":11.011056429,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":11.011061219,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":11.011065846,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":11.799381441,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":11.79940977,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":11.799414608,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":11.799418663,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stdout","time":13.249898351,"data":"Mon Jul 20 13:54:44 2026       \r\n"}
+,{"stream_name":"stdout","time":13.249930915,"data":"+-----------------------------------------------------------------------------------------+\r\n"}
+,{"stream_name":"stdout","time":13.24993439,"data":"| NVIDIA-SMI 580.159.04             Driver Version: 580.159.04     CUDA Version: 13.0     |\r\n"}
+,{"stream_name":"stdout","time":13.249936922,"data":"+-----------------------------------------+------------------------+----------------------+\r\n"}
+,{"stream_name":"stdout","time":13.249939422,"data":"| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |\r\n"}
+,{"stream_name":"stdout","time":13.249941836,"data":"| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |\r\n"}
+,{"stream_name":"stdout","time":13.249944448,"data":"|                                         |                        |               MIG M. |\r\n"}
+,{"stream_name":"stdout","time":13.249946929,"data":"|=========================================+========================+======================|\r\n"}
+,{"stream_name":"stdout","time":13.352184208,"data":"|   0  Tesla T4                       Off |   00000000:00:04.0 Off |                    0 |\r\n"}
+,{"stream_name":"stdout","time":13.352209704,"data":"| N/A   41C    P8              9W /   70W |       0MiB /  15360MiB |      0%      Default |\r\n"}
+,{"stream_name":"stdout","time":13.352214589,"data":"|                                         |                        |                  N/A |\r\n"}
+,{"stream_name":"stdout","time":13.352219036,"data":"+-----------------------------------------+------------------------+----------------------+\r\n"}
+,{"stream_name":"stdout","time":13.352223333,"data":"|   1  Tesla T4                       Off |   00000000:00:05.0 Off |                    0 |\r\n"}
+,{"stream_name":"stdout","time":13.352227854,"data":"| N/A   43C    P8             10W /   70W |       0MiB /  15360MiB |      0%      Default |\r\n"}
+,{"stream_name":"stdout","time":13.35223151,"data":"|                                         |                        |                  N/A |\r\n"}
+,{"stream_name":"stdout","time":13.352247369,"data":"+-----------------------------------------+------------------------+----------------------+\r\n"}
+,{"stream_name":"stdout","time":13.352251098,"data":"\r\n"}
+,{"stream_name":"stdout","time":13.352254303,"data":"+-----------------------------------------------------------------------------------------+\r\n"}
+,{"stream_name":"stdout","time":13.352257723,"data":"| Processes:                                                                              |\r\n"}
+,{"stream_name":"stdout","time":13.352261186,"data":"|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |\r\n"}
+,{"stream_name":"stdout","time":13.352264789,"data":"|        ID   ID                                                               Usage      |\r\n"}
+,{"stream_name":"stdout","time":13.352268344,"data":"|=========================================================================================|\r\n"}
+,{"stream_name":"stdout","time":13.352272001,"data":"|  No running processes found                                                             |\r\n"}
+,{"stream_name":"stdout","time":13.352278799,"data":"+-----------------------------------------------------------------------------------------+\r\n"}
+,{"stream_name":"stdout","time":33.512941058,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 389.2/389.2 kB 23.2 MB/s eta 0:00:00\r\n"}
+,{"stream_name":"stdout","time":33.512987445,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 516.0/516.0 kB 29.9 MB/s eta 0:00:00\r\n"}
+,{"stream_name":"stderr","time":33.74661773,"data":"Cloning into '/tmp/oncoreason'...\n"}
+,{"stream_name":"stderr","time":33.948443401,"data":"Cloning into '/tmp/oncoreason'...\n"}
+,{"stream_name":"stderr","time":33.948469161,"data":"\n"}
+,{"stream_name":"stderr","time":33.948475902,"data":"Cloning into '/tmp/oncoreason'...\n"}
+,{"stream_name":"stdout","time":35.195094241,"data":"/kaggle/input contains: ['datasets', 'notebooks']\n"}
+,{"stream_name":"stdout","time":36.103142526,"data":"candidates: /kaggle/input/notebooks/ta1010/oncoreason-policy-sampling-hard/candidates.jsonl | 400 samples\n"}
+,{"stream_name":"stdout","time":36.103172455,"data":"labelling modules: ['relabel_candidates.py', 'semantic_labels.py']\n"}
+,{"stream_name":"stdout","time":45.016490303,"data":"85 structured records | 51 therapies\n"}
+,{"stream_name":"stdout","time":45.016535767,"data":"  n_steps                  1236\n"}
+,{"stream_name":"stdout","time":45.016542173,"data":"  structural_sound          555  (44.9%)\n"}
+,{"stream_name":"stdout","time":45.016547458,"data":"  semantic_sound            223  (18.0%)\n"}
+,{"stream_name":"stdout","time":45.016552712,"data":"  uncited                   108  (8.7%)\n"}
+,{"stream_name":"stdout","time":45.016556986,"data":"  cited_other_case          571  (46.2%)\n"}
+,{"stream_name":"stdout","time":45.016561246,"data":"  contradicted               93  (7.5%)\n"}
+,{"stream_name":"stdout","time":45.016565468,"data":"  therapy_mismatch          142  (11.5%)\n"}
+,{"stream_name":"stdout","time":45.016569651,"data":"  disease_mismatch          806  (65.2%)\n"}
+,{"stream_name":"stdout","time":45.016577398,"data":"\n"}
+,{"stream_name":"stdout","time":45.016580812,"data":"If cited_other_case is now a meaningful share, stage E worked: the policy\n"}
+,{"stream_name":"stdout","time":45.016583975,"data":"now had other case ids available to misuse, which it did not in stage B.\n"}
+,{"stream_name":"stdout","time":45.051631581,"data":"875 train / 361 test steps, 15 held-out cases\n"}
+,{"stream_name":"stdout","time":51.570699028,"data":"tfidf      label_structural   0.659 [0.562, 0.763]\n"}
+,{"stream_name":"stderr","time":84.417692921,"data":"Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n"}
+,{"stream_name":"stderr","time":84.417724958,"data":"\n"}
+,{"stream_name":"stderr","time":84.417731366,"data":"Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n"}
+,{"stream_name":"stderr","time":92.580315648,"data":"[transformers] \u001b[1mModernBertForSequenceClassification LOAD REPORT\u001b[0m from: answerdotai/ModernBERT-base\n"}
+,{"stream_name":"stderr","time":92.582938817,"data":"Key               | Status     | \n"}
+,{"stream_name":"stderr","time":92.582956164,"data":"------------------+------------+-\n"}
+,{"stream_name":"stderr","time":92.582961412,"data":"decoder.bias      | UNEXPECTED | \n"}
+,{"stream_name":"stderr","time":92.582966377,"data":"classifier.bias   | MISSING    | \n"}
+,{"stream_name":"stderr","time":92.582971166,"data":"classifier.weight | MISSING    | \n"}
+,{"stream_name":"stderr","time":92.582977823,"data":"\n"}
+,{"stream_name":"stderr","time":92.582983533,"data":"Notes:\n"}
+,{"stream_name":"stderr","time":92.582989274,"data":"- UNEXPECTED:\tcan be ignored when loading from different task/architecture; not ok if you expect identical arch.\n"}
+,{"stream_name":"stderr","time":92.582995335,"data":"- MISSING:\tthose params were newly initialized because missing from the checkpoint. Consider training on your downstream task.\n"}
+,{"stream_name":"stderr","time":92.583000789,"data":"\n"}
+,{"stream_name":"stderr","time":92.58300606,"data":"[transformers] \u001b[1mModernBertForSequenceClassification LOAD REPORT\u001b[0m from: answerdotai/ModernBERT-base\n"}
+,{"stream_name":"stderr","time":92.583012119,"data":"Key               | Status     | \n"}
+,{"stream_name":"stderr","time":92.583017536,"data":"------------------+------------+-\n"}
+,{"stream_name":"stderr","time":92.583023,"data":"decoder.bias      | UNEXPECTED | \n"}
+,{"stream_name":"stderr","time":92.583028525,"data":"classifier.bias   | MISSING    | \n"}
+,{"stream_name":"stderr","time":92.583033853,"data":"classifier.weight | MISSING    | \n"}
+,{"stream_name":"stderr","time":92.583039189,"data":"\n"}
+,{"stream_name":"stderr","time":92.583044459,"data":"Notes:\n"}
+,{"stream_name":"stderr","time":92.583049813,"data":"- UNEXPECTED:\tcan be ignored when loading from different task/architecture; not ok if you expect identical arch.\n"}
+,{"stream_name":"stderr","time":92.583055745,"data":"- MISSING:\tthose params were newly initialized because missing from the checkpoint. Consider training on your downstream task.\n"}
+,{"stream_name":"stderr","time":95.548637736,"data":"/tmp/oncoreason/src/oncoreason/training/prm.py:191: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.\n"}
+,{"stream_name":"stderr","time":95.548672371,"data":"Consider using tensor.detach() first. (Triggered internally at /pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:836.)\n"}
+,{"stream_name":"stderr","time":95.548678347,"data":"  total += float(loss)\n"}
+,{"stream_name":"stderr","time":95.548683124,"data":"\n"}
+,{"stream_name":"stderr","time":95.54868763,"data":"/tmp/oncoreason/src/oncoreason/training/prm.py:191: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.\n"}
+,{"stream_name":"stderr","time":95.548692594,"data":"Consider using tensor.detach() first. (Triggered internally at /pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:836.)\n"}
+,{"stream_name":"stderr","time":95.548710985,"data":"  total += float(loss)\n"}
+,{"stream_name":"stdout","time":141.548242898,"data":"  epoch 1/3  mean loss 0.5941\n"}
+,{"stream_name":"stdout","time":191.381663074,"data":"  epoch 2/3  mean loss 0.3786\n"}
+,{"stream_name":"stdout","time":244.040784844,"data":"  epoch 3/3  mean loss 0.2590\n"}
+,{"stream_name":"stdout","time":250.530873165,"data":"modernbert label_structural   0.767 [0.683, 0.853]  (201s)\n"}
+,{"stream_name":"stdout","time":250.798175893,"data":"tfidf      label_semantic     0.849 [0.768, 0.921]\n"}
+,{"stream_name":"stderr","time":251.530494639,"data":"[transformers] \u001b[1mModernBertForSequenceClassification LOAD REPORT\u001b[0m from: answerdotai/ModernBERT-base\n"}
+,{"stream_name":"stderr","time":251.530529592,"data":"Key               | Status     | \n"}
+,{"stream_name":"stderr","time":251.530537261,"data":"------------------+------------+-\n"}
+,{"stream_name":"stderr","time":251.530543056,"data":"decoder.bias      | UNEXPECTED | \n"}
+,{"stream_name":"stderr","time":251.530548372,"data":"classifier.bias   | MISSING    | \n"}
+,{"stream_name":"stderr","time":251.530553763,"data":"classifier.weight | MISSING    | \n"}
+,{"stream_name":"stderr","time":251.530559035,"data":"\n"}
+,{"stream_name":"stderr","time":251.530563852,"data":"Notes:\n"}
+,{"stream_name":"stderr","time":251.530568423,"data":"- UNEXPECTED:\tcan be ignored when loading from different task/architecture; not ok if you expect identical arch.\n"}
+,{"stream_name":"stderr","time":251.530573425,"data":"- MISSING:\tthose params were newly initialized because missing from the checkpoint. Consider training on your downstream task.\n"}
+,{"stream_name":"stderr","time":251.530578317,"data":"\n"}
+,{"stream_name":"stderr","time":251.530582665,"data":"[transformers] \u001b[1mModernBertForSequenceClassification LOAD REPORT\u001b[0m from: answerdotai/ModernBERT-base\n"}
+,{"stream_name":"stderr","time":251.530593047,"data":"Key               | Status     | \n"}
+,{"stream_name":"stderr","time":251.530597161,"data":"------------------+------------+-\n"}
+,{"stream_name":"stderr","time":251.530600285,"data":"decoder.bias      | UNEXPECTED | \n"}
+,{"stream_name":"stderr","time":251.530603569,"data":"classifier.bias   | MISSING    | \n"}
+,{"stream_name":"stderr","time":251.53060664,"data":"classifier.weight | MISSING    | \n"}
+,{"stream_name":"stderr","time":251.530609792,"data":"\n"}
+,{"stream_name":"stderr","time":251.530628302,"data":"Notes:\n"}
+,{"stream_name":"stderr","time":251.530634007,"data":"- UNEXPECTED:\tcan be ignored when loading from different task/architecture; not ok if you expect identical arch.\n"}
+,{"stream_name":"stderr","time":251.530645567,"data":"- MISSING:\tthose params were newly initialized because missing from the checkpoint. Consider training on your downstream task.\n"}
+,{"stream_name":"stdout","time":304.078874065,"data":"  epoch 1/3  mean loss 0.6917\n"}
+,{"stream_name":"stdout","time":355.951008599,"data":"  epoch 2/3  mean loss 0.3978\n"}
+,{"stream_name":"stdout","time":407.921428692,"data":"  epoch 3/3  mean loss 0.2675\n"}
+,{"stream_name":"stdout","time":414.419227114,"data":"modernbert label_semantic     0.881 [0.798, 0.951]  (164s)\n"}
+,{"stream_name":"stdout","time":415.329060502,"data":"{\n"}
+,{"stream_name":"stdout","time":415.329090169,"data":" \"tfidf__label_structural\": {\n"}
+,{"stream_name":"stdout","time":415.329096068,"data":"  \"balanced_accuracy\": 0.659,\n"}
+,{"stream_name":"stdout","time":415.329106031,"data":"  \"ci95\": [\n"}
+,{"stream_name":"stdout","time":415.329133647,"data":"   0.562,\n"}
+,{"stream_name":"stdout","time":415.329137968,"data":"   0.763\n"}
+,{"stream_name":"stdout","time":415.32914149,"data":"  ],\n"}
+,{"stream_name":"stdout","time":415.329145108,"data":"  \"accuracy\": 0.662,\n"}
+,{"stream_name":"stdout","time":415.329148963,"data":"  \"positive_rate\": 0.404,\n"}
+,{"stream_name":"stdout","time":415.329152604,"data":"  \"tp\": 94,\n"}
+,{"stream_name":"stdout","time":415.329155944,"data":"  \"fp\": 70,\n"}
+,{"stream_name":"stdout","time":415.329159188,"data":"  \"tn\": 145,\n"}
+,{"stream_name":"stdout","time":415.329162379,"data":"  \"fn\": 52,\n"}
+,{"stream_name":"stdout","time":415.329165682,"data":"  \"recall_sound\": 0.644,\n"}
+,{"stream_name":"stdout","time":415.329169047,"data":"  \"recall_unsound\": 0.674\n"}
+,{"stream_name":"stdout","time":415.329172562,"data":" },\n"}
+,{"stream_name":"stdout","time":415.329190243,"data":" \"modernbert__label_structural\": {\n"}
+,{"stream_name":"stdout","time":415.32919469,"data":"  \"balanced_accuracy\": 0.767,\n"}
+,{"stream_name":"stdout","time":415.329198888,"data":"  \"ci95\": [\n"}
+,{"stream_name":"stdout","time":415.329202849,"data":"   0.683,\n"}
+,{"stream_name":"stdout","time":415.329206835,"data":"   0.853\n"}
+,{"stream_name":"stdout","time":415.329210692,"data":"  ],\n"}
+,{"stream_name":"stdout","time":415.32921456,"data":"  \"accuracy\": 0.756,\n"}
+,{"stream_name":"stdout","time":415.329218554,"data":"  \"positive_rate\": 0.404,\n"}
+,{"stream_name":"stdout","time":415.329221898,"data":"  \"tp\": 120,\n"}
+,{"stream_name":"stdout","time":415.32922516,"data":"  \"fp\": 62,\n"}
+,{"stream_name":"stdout","time":415.329228436,"data":"  \"tn\": 153,\n"}
+,{"stream_name":"stdout","time":415.329232033,"data":"  \"fn\": 26,\n"}
+,{"stream_name":"stdout","time":415.329235778,"data":"  \"recall_sound\": 0.822,\n"}
+,{"stream_name":"stdout","time":415.329239199,"data":"  \"recall_unsound\": 0.712\n"}
+,{"stream_name":"stdout","time":415.329242523,"data":" },\n"}
+,{"stream_name":"stdout","time":415.329245758,"data":" \"tfidf__label_semantic\": {\n"}
+,{"stream_name":"stdout","time":415.329249094,"data":"  \"balanced_accuracy\": 0.849,\n"}
+,{"stream_name":"stdout","time":415.329252615,"data":"  \"ci95\": [\n"}
+,{"stream_name":"stdout","time":415.329255797,"data":"   0.768,\n"}
+,{"stream_name":"stdout","time":415.329259161,"data":"   0.921\n"}
+,{"stream_name":"stdout","time":415.329282434,"data":"  ],\n"}
+,{"stream_name":"stdout","time":415.329286745,"data":"  \"accuracy\": 0.856,\n"}
+,{"stream_name":"stdout","time":415.329290388,"data":"  \"positive_rate\": 0.172,\n"}
+,{"stream_name":"stdout","time":415.32929349,"data":"  \"tp\": 52,\n"}
+,{"stream_name":"stdout","time":415.329296549,"data":"  \"fp\": 42,\n"}
+,{"stream_name":"stdout","time":415.329299703,"data":"  \"tn\": 257,\n"}
+,{"stream_name":"stdout","time":415.329302978,"data":"  \"fn\": 10,\n"}
+,{"stream_name":"stdout","time":415.329306294,"data":"  \"recall_sound\": 0.839,\n"}
+,{"stream_name":"stdout","time":415.329309388,"data":"  \"recall_unsound\": 0.86\n"}
+,{"stream_name":"stdout","time":415.329312779,"data":" },\n"}
+,{"stream_name":"stdout","time":415.329316491,"data":" \"modernbert__label_semantic\": {\n"}
+,{"stream_name":"stdout","time":415.329320478,"data":"  \"balanced_accuracy\": 0.881,\n"}
+,{"stream_name":"stdout","time":415.329323907,"data":"  \"ci95\": [\n"}
+,{"stream_name":"stdout","time":415.329327305,"data":"   0.798,\n"}
+,{"stream_name":"stdout","time":415.329330614,"data":"   0.951\n"}
+,{"stream_name":"stdout","time":415.329340418,"data":"  ],\n"}
+,{"stream_name":"stdout","time":415.329344336,"data":"  \"accuracy\": 0.867,\n"}
+,{"stream_name":"stdout","time":415.329348204,"data":"  \"positive_rate\": 0.172,\n"}
+,{"stream_name":"stdout","time":415.32935163,"data":"  \"tp\": 56,\n"}
+,{"stream_name":"stdout","time":415.32935488,"data":"  \"fp\": 42,\n"}
+,{"stream_name":"stdout","time":415.329358161,"data":"  \"tn\": 257,\n"}
+,{"stream_name":"stdout","time":415.329361538,"data":"  \"fn\": 6,\n"}
+,{"stream_name":"stdout","time":415.329364781,"data":"  \"recall_sound\": 0.903,\n"}
+,{"stream_name":"stdout","time":415.32936812,"data":"  \"recall_unsound\": 0.86\n"}
+,{"stream_name":"stdout","time":415.329371437,"data":" }\n"}
+,{"stream_name":"stdout","time":415.329374562,"data":"}\n"}
+,{"stream_name":"stdout","time":415.329377618,"data":"\n"}
+,{"stream_name":"stdout","time":415.329380859,"data":"best cell: modernbert__label_semantic at 0.881 [0.798, 0.951]\n"}
+,{"stream_name":"stdout","time":415.329384263,"data":"model-class effect (semantic labels): +0.032\n"}
+,{"stream_name":"stdout","time":415.329387604,"data":"label effect (modernbert):            +0.114\n"}
+,{"stream_name":"stdout","time":415.329390888,"data":"\n"}
+,{"stream_name":"stdout","time":415.329394448,"data":"GATE: PASS on modernbert__label_semantic. A verifier at 0.881 [0.798, 0.951] is usable for trace selection; RFT/DPO can proceed with the reward signal named explicitly.\n"}
+,{"stream_name":"stderr","time":420.759192731,"data":"/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":420.759245678,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":420.96386326,"data":"/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":420.963884695,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":421.625046349,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":421.939790192,"data":"[NbConvertApp] Writing 124799 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":424.226992576,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":425.110706287,"data":"[NbConvertApp] Writing 420448 bytes to __results__.html\n"}
+]

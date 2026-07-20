@@ -1,0 +1,5 @@
+{
+ "temperature": 1.0,
+ "backend": "modernbert",
+ "base_model": "answerdotai/ModernBERT-base"
+}

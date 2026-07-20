@@ -1,0 +1,82 @@
+{
+ "seed": 17,
+ "features": "step + ids + evidence text (identical in every cell)",
+ "source": "candidates.jsonl",
+ "n_train": 875,
+ "n_test": 361,
+ "n_test_cases": 15,
+ "label_composition": {
+  "n_steps": 1236,
+  "structural_sound": 555,
+  "semantic_sound": 223,
+  "uncited": 108,
+  "cited_other_case": 571,
+  "contradicted": 93,
+  "therapy_mismatch": 142,
+  "disease_mismatch": 806
+ },
+ "results": {
+  "tfidf__label_structural": {
+   "balanced_accuracy": 0.659,
+   "ci95": [
+    0.562,
+    0.763
+   ],
+   "accuracy": 0.662,
+   "positive_rate": 0.404,
+   "tp": 94,
+   "fp": 70,
+   "tn": 145,
+   "fn": 52,
+   "recall_sound": 0.644,
+   "recall_unsound": 0.674
+  },
+  "modernbert__label_structural": {
+   "balanced_accuracy": 0.767,
+   "ci95": [
+    0.683,
+    0.853
+   ],
+   "accuracy": 0.756,
+   "positive_rate": 0.404,
+   "tp": 120,
+   "fp": 62,
+   "tn": 153,
+   "fn": 26,
+   "recall_sound": 0.822,
+   "recall_unsound": 0.712
+  },
+  "tfidf__label_semantic": {
+   "balanced_accuracy": 0.849,
+   "ci95": [
+    0.768,
+    0.921
+   ],
+   "accuracy": 0.856,
+   "positive_rate": 0.172,
+   "tp": 52,
+   "fp": 42,
+   "tn": 257,
+   "fn": 10,
+   "recall_sound": 0.839,
+   "recall_unsound": 0.86
+  },
+  "modernbert__label_semantic": {
+   "balanced_accuracy": 0.881,
+   "ci95": [
+    0.798,
+    0.951
+   ],
+   "accuracy": 0.867,
+   "positive_rate": 0.172,
+   "tp": 56,
+   "fp": 42,
+   "tn": 257,
+   "fn": 6,
+   "recall_sound": 0.903,
+   "recall_unsound": 0.86
+  }
+ },
+ "base_model": "answerdotai/ModernBERT-base",
+ "ci_method": "case-level bootstrap, 1000 iterations, 95 percent"
+}

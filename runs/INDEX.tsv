@@ -8,3 +8,4 @@ timestamp	label	gpu	errors	files
 20260720-1535	e-hard-n8-t08	Tesla T4	none	20260720-1535-e-hard-n8-t08
 20260720-1537	f-2x2-semantic	Tesla T4	Traceback (most recent call last)	20260720-1537-f-2x2-semantic
 20260720-1540	f-2x2-semantic	Tesla T4	Traceback (most recent call last)	20260720-1540-f-2x2-semantic
+20260720-1604	f-2x2-semantic	Tesla T4	none	20260720-1604-f-2x2-semantic

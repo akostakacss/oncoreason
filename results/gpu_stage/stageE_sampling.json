@@ -1,0 +1,16 @@
+{
+ "n_samples": 400,
+ "n_cases": 50,
+ "samples_per_case": 8,
+ "temperature": 0.8,
+ "model": "Qwen/Qwen2.5-3B-Instruct",
+ "parse_rate": 1.0,
+ "n_steps": 1236,
+ "unsound_step_rate": 0.557,
+ "invented_id_steps": 106,
+ "off_case_id_steps": 559,
+ "uncited_steps": 43,
+ "abstain_rate": 0.598,
+ "mean_within_case_spread": 0.64,
+ "mean_steps_per_sample": 3.09
+}

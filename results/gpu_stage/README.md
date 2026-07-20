@@ -17,9 +17,10 @@ correction attached rather than quietly edited out — the sequence of reasoning
 | **B** | What does a real policy actually get wrong? | Real hallucinations exist, but 95% of them are "cited nothing" | [`stageB_sampling.md`](stageB_sampling.md) · [figure](stageB_figure.png) |
 | **C** | Does a verifier trained on constructed negatives transfer? | **No — 0.530 balanced accuracy, barely above chance** | [`stageC_prm_transfer.md`](stageC_prm_transfer.md) · [figure](stageC_figure.png) |
 | **D** | Does showing the model the evidence *text* fix it? | **No — it made every arm worse.** A prediction of mine that failed | [`stageD_featurize_ablation.md`](stageD_featurize_ablation.md) · [figure](stageD_figure.png) |
-| **E** | Can we make the negatives *hard* instead of merely real? | *(running)* | `stageE_hard_negatives.md` |
-| **F** | Is the bottleneck model capacity, or the labels? | *(pending)* | `stageF_modernbert.md` |
-| — | **Decision gate**: is the verifier usable as a reward signal at all? | *(pending)* | |
+| **E** | Can we make the negatives *hard* instead of merely real? | **Yes — uncited 481→43, off-case 0→559** | [`stageE_hard_negatives.md`](stageE_hard_negatives.md) |
+| **G** | Can the label ask about *support* rather than bookkeeping? | Yes — semantic labels from structured fields, coverage 53% | [`stageG_efficacy_mtbbench.md`](stageG_efficacy_mtbbench.md) |
+| **F** | Is the bottleneck model capacity, or the labels? | **The labels.** +0.190 from the label, +0.032 from the model | [`stageF_modernbert.md`](stageF_modernbert.md) · [figure](stageF_figure.png) |
+| — | **Decision gate**: is the verifier usable as a reward signal? | **PASS** — 0.881 [0.798, 0.951], with a caveat | see below |
 
 ## The thread, in order
 
@@ -114,3 +115,40 @@ Every attempt, including the failures, is in `runs/INDEX.tsv`. The three failed 
 (nbformat cell serialization, Kaggle archive expansion, mount-path discovery) cost ~8 minutes
 of T4 time between them and are kept deliberately: a tooling record that only contains
 successes is not an audit trail.
+
+
+## The gate result, and what it does and does not license
+
+Stage F's 2x2 lands at **0.881 [0.798, 0.951]** for ModernBERT on semantic labels, clearing
+the 0.55 CI-lower-bound floor set in advance. RFT/DPO may proceed.
+
+Three things must travel with that number.
+
+**1. The label, not the model, did the work.** Changing the label definition bought +0.190 for
+TF-IDF; changing the backend bought +0.032 once the label was right. Stage D's diagnosis —
+that the constraint was a label posing no relational question, rather than model capacity —
+is what the 2x2 confirms.
+
+**2. The model-class effect is inside noise.** ModernBERT's [0.798, 0.951] overlaps TF-IDF's
+[0.768, 0.921] almost entirely. At 15 held-out cases the honest statement is "cross-attention
+did not clearly help once the label was fixed", not "the transformer is better".
+
+**3. The semantic label is ~65% tumour-type consistency.** `disease_mismatch` accounts for 806
+of 1236 steps, so 0.881 substantially measures whether the cited record concerned the right
+tumour type — closer to matching than to judging clinical support, and partly a *retrieval*
+artifact because CIViC returns cross-disease evidence for a variant. That TF-IDF alone reaches
+0.849 is consistent with a largely lexical task.
+
+The reward signal for any downstream RFT/DPO must therefore be described as: *a ModernBERT
+step-verifier at 0.881 [0.798, 0.951] on hard-sampled policy traces, whose label is 65%
+tumour-type consistency.*
+
+## Still open
+
+- **RFT / DPO** (`train_rft`, `train_dpo` in `training/posttrain.py`) remain stubs. The gate
+  permits them; they are not run.
+- **No baseline arm.** Phase 6's third honest limitation stands: nothing here can yet be called
+  an improvement over an untrained policy.
+- **`disease_mismatch` conflates policy error with retrieval artifact.** Separating them is the
+  single highest-value fix to the label.
+- **One seed, 15 test cases.** No repeated splits; every interval here is wide.

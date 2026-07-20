@@ -333,8 +333,93 @@ def stage_d() -> None:
     save(fig, os.path.join(GPU, "stageD_figure"))
 
 
+# ---- stage F -----------------------------------------------------------------------
+def stage_f() -> None:
+    d = json.load(open(os.path.join(GPU, "stageF_modernbert.json")))
+    R = d["results"]
+    cells = [("tfidf__label_structural", "TF-IDF"), ("modernbert__label_structural", "ModernBERT"),
+             ("tfidf__label_semantic", "TF-IDF"), ("modernbert__label_semantic", "ModernBERT")]
+
+    fig = plt.figure(figsize=(15, 9))
+    fig.text(0.05, 0.965, "Stage F \u2014 the label mattered more than the model",
+             fontsize=22, fontweight="bold", color=INK, va="top")
+    fig.text(0.05, 0.916,
+             "2x2 over backend x label definition. Feature string, split and seed identical in "
+             "every cell.",
+             fontsize=11.5, color=INK_SECONDARY, va="top")
+    fig.text(0.05, 0.881, "Balanced accuracy with case-level bootstrap CI (1000 iterations, "
+             "95%) \u00b7 15 held-out cases, 361 test steps \u00b7 seed 17",
+             fontsize=9, color=INK_MUTED, va="top", style="italic")
+
+    ax = fig.add_axes((0.075, 0.350, 0.545, 0.465))
+    recessive(ax, ygrid=True)
+    xs = [0, 0.75, 2.0, 2.75]
+    for x, (key, lab) in zip(xs, cells):
+        v = R[key]["balanced_accuracy"]; lo, hi = R[key]["ci95"]
+        col = SLOT_1_BLUE if "tfidf" in key else SLOT_7_VIOLET
+        vbar(ax, x, v, col, width=0.5, radius=0.004)
+        ax.plot([x, x], [lo, hi], color=INK, lw=1.8, zorder=5, solid_capstyle="butt")
+        for y in (lo, hi):
+            ax.plot([x - 0.11, x + 0.11], [y, y], color=INK, lw=1.8, zorder=5)
+        ax.text(x, hi + 0.028, f"{v:.3f}", ha="center", fontsize=12,
+                fontweight="bold", color=INK)
+        ax.text(x, -0.055, lab, ha="center", fontsize=9.6, color=INK_SECONDARY)
+    ax.axhline(0.5, color=INK_MUTED, lw=1.3, ls=(0, (5, 4)), zorder=4)
+    ax.text(-0.55, 0.518, "chance", fontsize=9.3, color=INK_MUTED, ha="left", style="italic")
+    ax.text(0.375, -0.112, "structural label", ha="center", fontsize=11,
+            fontweight="bold", color=INK, transform=ax.get_xaxis_transform())
+    ax.text(2.375, -0.112, "semantic label", ha="center", fontsize=11,
+            fontweight="bold", color=INK, transform=ax.get_xaxis_transform())
+    ax.set_xticks([]); ax.set_xlim(-0.6, 3.35); ax.set_ylim(0, 1.06)
+    ax.set_yticks([0, 0.25, 0.5, 0.75, 1.0])
+    ax.set_ylabel("balanced accuracy", fontsize=9.5, color=INK_MUTED)
+
+    ax2 = fig.add_axes((0.665, 0.350, 0.275, 0.465)); ax2.axis("off")
+    ax2.set_xlim(0, 1); ax2.set_ylim(0, 1)
+    ax2.add_patch(FancyBboxPatch((0, 0), 1, 1, boxstyle="round,pad=0,rounding_size=0.035",
+                                 facecolor=SURFACE_SUNKEN, edgecolor=GRID, lw=1.0))
+    ax2.text(0.07, 0.94, tracked("EFFECT SIZES"), fontsize=8.5, color=INK_MUTED,
+             fontweight="bold", va="top")
+    rows = [("Label, TF-IDF", "+0.190", True), ("Label, ModernBERT", "+0.114", True),
+            ("Model, structural", "+0.108", False), ("Model, semantic", "+0.032", False)]
+    y = 0.79
+    for name, val, strong in rows:
+        ax2.text(0.07, y, name, fontsize=10, color=INK if strong else INK_SECONDARY,
+                 fontweight="bold" if strong else "normal", va="center")
+        ax2.text(0.93, y, val, fontsize=12 if strong else 11,
+                 color=SLOT_3_ROSE if strong else INK_MUTED,
+                 fontweight="bold", va="center", ha="right")
+        y -= 0.145
+    ax2.text(0.07, 0.16,
+             "Changing the label bought more\nthan changing the model. Stage D's\n"
+             "diagnosis holds: the constraint was\nthe label, not capacity.",
+             fontsize=9.2, color=INK_SECONDARY, va="top", linespacing=1.55)
+
+    ax3 = fig.add_axes((0.05, 0.030, 0.89, 0.198)); ax3.axis("off")
+    ax3.set_xlim(0, 1); ax3.set_ylim(0, 1)
+    ax3.add_patch(FancyBboxPatch((0, 0), 1, 1, boxstyle="round,pad=0,rounding_size=0.025",
+                                 facecolor=TINT_BLUE, edgecolor=GRID, lw=1.0))
+    ax3.text(0.014, 0.84, "GATE: PASS \u2014 0.881 [0.798, 0.951], above the 0.55 floor set "
+             "in advance. RFT/DPO may proceed.", fontsize=10.6, fontweight="bold",
+             color=INK, va="center")
+    ax3.text(0.014, 0.58,
+             "But the model-class effect is not distinguishable: the two semantic CIs overlap "
+             "almost entirely, so +0.032 is inside noise at n=15 cases.",
+             fontsize=10.0, color=INK, va="center")
+    ax3.text(0.014, 0.35,
+             "And disease_mismatch is 806 of 1236 steps, so the semantic label is ~65% "
+             "tumour-type consistency \u2014 closer to matching than to judging clinical",
+             fontsize=10.0, color=INK, va="center")
+    ax3.text(0.014, 0.13,
+             "support. That TF-IDF alone reaches 0.849 is consistent with a largely lexical "
+             "task. The 0.881 must be quoted with that caveat attached.",
+             fontsize=10.0, color=INK, va="center")
+    save(fig, os.path.join(GPU, "stageF_figure"))
+
+
 if __name__ == "__main__":
     apply_rc()
     stage_b()
     stage_c()
     stage_d()
+    stage_f()
