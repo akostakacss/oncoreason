@@ -1,0 +1,177 @@
+{
+ "run_at": "2026-07-20T19:43:03",
+ "seed": 17,
+ "source": "candidates.jsonl",
+ "n_test_cases": 15,
+ "n_candidates_per_case": 8,
+ "quality_metric": "fraction of steps judged sound by the semantic labeller",
+ "backend": "tfidf",
+ "arms": {
+  "worst": 0.0,
+  "random": 0.167,
+  "best_of_n": 0.256,
+  "oracle": 0.458
+ },
+ "lift_best_of_n_over_random": 0.089,
+ "lift_ci95": [
+  -0.059,
+  0.238
+ ],
+ "remaining_gap_to_oracle": 0.202,
+ "gap_ci95": [
+  0.071,
+  0.371
+ ],
+ "per_case": [
+  {
+   "case_id": "luad_tcga_pan_can_atlas_2018:TCGA-05-4418-01",
+   "n": 8,
+   "random": 0.0875,
+   "best_of_n": 0.5,
+   "oracle": 0.5,
+   "worst": 0.0,
+   "picked": 2,
+   "prm_score": 0.28
+  },
+  {
+   "case_id": "luad_tcga_pan_can_atlas_2018:TCGA-44-2656-01",
+   "n": 8,
+   "random": 0.0625,
+   "best_of_n": 0.0,
+   "oracle": 0.25,
+   "worst": 0.0,
+   "picked": 0,
+   "prm_score": 0.303
+  },
+  {
+   "case_id": "luad_tcga_pan_can_atlas_2018:TCGA-55-7913-01",
+   "n": 8,
+   "random": 0.03571428571428571,
+   "best_of_n": 0.0,
+   "oracle": 0.2857142857142857,
+   "worst": 0.0,
+   "picked": 5,
+   "prm_score": 0.38
+  },
+  {
+   "case_id": "luad_tcga_pan_can_atlas_2018:TCGA-55-8507-01",
+   "n": 8,
+   "random": 0.0,
+   "best_of_n": 0.0,
+   "oracle": 0.0,
+   "worst": 0.0,
+   "picked": 3,
+   "prm_score": 0.53
+  },
+  {
+   "case_id": "luad_tcga_pan_can_atlas_2018:TCGA-55-A494-01",
+   "n": 8,
+   "random": 0.0,
+   "best_of_n": 0.0,
+   "oracle": 0.0,
+   "worst": 0.0,
+   "picked": 6,
+   "prm_score": 0.217
+  },
+  {
+   "case_id": "lusc_tcga_pan_can_atlas_2018:TCGA-34-8454-01",
+   "n": 8,
+   "random": 0.32291666666666663,
+   "best_of_n": 1.0,
+   "oracle": 1.0,
+   "worst": 0.0,
+   "picked": 6,
+   "prm_score": 0.373
+  },
+  {
+   "case_id": "lusc_tcga_pan_can_atlas_2018:TCGA-39-5021-01",
+   "n": 8,
+   "random": 0.0625,
+   "best_of_n": 0.0,
+   "oracle": 0.5,
+   "worst": 0.0,
+   "picked": 0,
+   "prm_score": 0.362
+  },
+  {
+   "case_id": "lusc_tcga_pan_can_atlas_2018:TCGA-56-7823-01",
+   "n": 8,
+   "random": 0.22916666666666666,
+   "best_of_n": 0.5,
+   "oracle": 0.5,
+   "worst": 0.0,
+   "picked": 5,
+   "prm_score": 0.505
+  },
+  {
+   "case_id": "lusc_tcga_pan_can_atlas_2018:TCGA-56-8307-01",
+   "n": 8,
+   "random": 0.25,
+   "best_of_n": 0.0,
+   "oracle": 0.5,
+   "worst": 0.0,
+   "picked": 1,
+   "prm_score": 0.518
+  },
+  {
+   "case_id": "lusc_tcga_pan_can_atlas_2018:TCGA-60-2722-01",
+   "n": 8,
+   "random": 0.3958333333333333,
+   "best_of_n": 0.0,
+   "oracle": 1.0,
+   "worst": 0.0,
+   "picked": 7,
+   "prm_score": 0.505
+  },
+  {
+   "case_id": "lusc_tcga_pan_can_atlas_2018:TCGA-66-2788-01",
+   "n": 8,
+   "random": 0.2604166666666667,
+   "best_of_n": 0.5,
+   "oracle": 0.5,
+   "worst": 0.0,
+   "picked": 0,
+   "prm_score": 0.336
+  },
+  {
+   "case_id": "lusc_tcga_pan_can_atlas_2018:TCGA-85-8287-01",
+   "n": 8,
+   "random": 0.0,
+   "best_of_n": 0.0,
+   "oracle": 0.0,
+   "worst": 0.0,
+   "picked": 6,
+   "prm_score": 0.409
+  },
+  {
+   "case_id": "lusc_tcga_pan_can_atlas_2018:TCGA-85-8355-01",
+   "n": 8,
+   "random": 0.4625,
+   "best_of_n": 1.0,
+   "oracle": 1.0,
+   "worst": 0.0,
+   "picked": 0,
+   "prm_score": 0.656
+  },
+  {
+   "case_id": "lusc_tcga_pan_can_atlas_2018:TCGA-85-A511-01",
+   "n": 8,
+   "random": 0.15625,
+   "best_of_n": 0.0,
+   "oracle": 0.5,
+   "worst": 0.0,
+   "picked": 3,
+   "prm_score": 0.351
+  },
+  {
+   "case_id": "lusc_tcga_pan_can_atlas_2018:TCGA-96-7544-01",
+   "n": 8,
+   "random": 0.17708333333333331,
+   "best_of_n": 0.3333333333333333,
+   "oracle": 0.3333333333333333,
+   "worst": 0.0,
+   "picked": 6,
+   "prm_score": 0.226
+  }
+ ]
+}

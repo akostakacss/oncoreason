@@ -18,7 +18,7 @@ clinical-grade evaluation harness.
 ![The system in one page: population evidence and an individual molecular profile are
 adjudicated into an auditable recommendation](concept_figure.png)
 
-> **Status: all 7 phases built, tested and packaged on CPU; the GPU stage is in progress.**
+> **Status: all 7 phases built and tested on CPU; the GPU stage is run and measured.**
 > Data connectors, case construction, agent scaffolding, retrieval, guideline-verified process
 > supervision, a trained and calibrated process reward model, and an 8-metric clinical
 > evaluation harness all run end to end on CPU in one command (`python scripts/run_pipeline.py`),
@@ -36,7 +36,8 @@ and lands in `results/`, so none of it is asserted without an artifact behind it
 
 | Result | Number | Reading it |
 |---|---|---|
-| PRM held-out accuracy | **0.914** (TP 86 / FP 12 / TN 62 / FN 2) | Real, but on a semi-synthetic distribution — see [Phase 5](phases/PHASE5_posttraining.md). The verifier has never scored actual policy hallucinations. |
+| PRM held-out accuracy | ~~0.914~~ → **0.881** [0.798, 0.951] | **Superseded, and the correction is the result.** 0.914 was measured on *constructed* negatives. Sampling a real policy and re-measuring gave **0.530** — barely above chance. Redesigning the label (citation *correctness*, not *presence*) recovered 0.881. Caveat: ~65% of that label is tumour-type consistency. [Full trail](results/gpu_stage/). |
+| Verifier-guided selection (Best-of-N) | +0.089 [**−0.059**, +0.238] | **Not distinguishable from zero.** Step-level accuracy did not translate into demonstrable trace-level selection at n=15 held-out cases. Reported because it is the honest answer, not the hoped-for one. |
 | Guideline concordance | 0.96 top-1 | The **least** meaningful number here: the gold label is derived from the same guideline index the agent retrieves over. Reported with that caveat attached, not as a headline. |
 | **Abstention** | fixed: **0/50 → 24/50** | **The harness found a real bug and I fixed it.** The system never abstained — traced to a strict `<` where a fallback guideline's confidence (0.50) tied the abstain threshold (0.50) exactly. One-character fix; molecular interpretation agreement moved 0.24 → **0.72**. Fixing it surfaced a subtler, still-open finding: 14/38 non-actionable cases still recommend, because they're guideline-backed even without top-tier CIViC evidence — a gold-standard definition gap, not a hallucination. See [Phase 6 addendum](phases/PHASE6_evaluation.md#addendum--the-abstain-threshold-fix). |
 | Calibration (ECE) | **0.304** | Poor. Confidence tracks *which guideline branch fired*, not *how likely the answer is to be right*. Stated plainly rather than smoothed over. |

@@ -1,15 +1,26 @@
 # Phase 5 — Post-training (the process reward model)
 
-**Status:** 🟡 core built on CPU; **GPU stage started on Kaggle T4** ·
-**Compute:** CPU-local (below) + Kaggle T4 (in progress)
+**Status:** 🟡 core built on CPU; **GPU stage run and measured on Kaggle T4** ·
+**Compute:** CPU-local (below) + Kaggle T4 (complete)
 
-> **GPU-stage log.** The CPU-provable path below (data construction, degenerate-label finding,
-> counterfactual negatives, the TF-IDF PRM) is done and unchanged. Now started: the
-> `backend="modernbert"` fine-tune, real (non-deterministic) policy sampling for Best-of-N, and
-> LoRA RFT/DPO on Qwen2.5-3B-Instruct, all previously gated behind explicit enable-flags because
-> `transformers`/GPU were unavailable locally. Estimated 2-4 T4-hours; this section will be
-> updated with the held-out numbers once the run completes. See `scripts/run_pipeline.py --help`
-> for the CPU path this extends.
+> **GPU-stage log — run and measured.** The CPU-provable path below (data construction,
+> degenerate-label finding, counterfactual negatives, the TF-IDF PRM) is unchanged and still
+> what this document reports. What has since been run, in
+> [`results/gpu_stage/`](../results/gpu_stage/):
+>
+> - **The 0.914 below does not transfer.** Sampling a real policy and re-scoring gave **0.530**
+>   balanced accuracy — the verifier caught 83.8% of constructed negatives and 11.4% of real
+>   ones. This retires honest limitation #1 by answering it.
+> - **Redesigning the label recovered it to 0.881 [0.798, 0.951]** — the binding constraint was
+>   a label asking about citation *presence* rather than *correctness*, not model capacity.
+>   Changing the label bought +0.190; changing TF-IDF to ModernBERT bought +0.032.
+> - **`backend="modernbert"` is implemented**, not gated (`PRM._fit_modernbert`).
+> - **Best-of-N is now demonstrated** and retires honest limitation #2 — but its lift over a
+>   random sample is **+0.089 [−0.059, +0.238]**, not distinguishable from zero at n=15.
+> - **RFT/DPO remain unrun.** The gate permits them; stage H argues a baseline arm should come
+>   first, and that the oracle ceiling of 0.458 bounds what RFT could imitate.
+>
+> The numbers in the body below are the original CPU results and are left as written.
 
 ## Aim
 
@@ -99,11 +110,13 @@ That yields **252 synthetic negatives → 550 examples, 54.3% positive.**
 
 ## Honest limitations
 
-1. The verifier has never seen policy-generated text. Its accuracy on real hallucinations is
-   **unmeasured**.
-2. Best-of-N is implemented and tested but **not meaningfully demonstrated**: the deterministic
-   scaffold produces one trace per case, so there is nothing to choose between. It needs a
-   sampling policy, which is the GPU path.
+1. ~~The verifier has never seen policy-generated text. Its accuracy on real hallucinations is
+   **unmeasured**.~~ **Measured**: 0.530 balanced accuracy on real policy output against 0.908
+   on constructed negatives. See [`stageC_prm_transfer.md`](../results/gpu_stage/stageC_prm_transfer.md).
+2. ~~Best-of-N is implemented and tested but **not meaningfully demonstrated**~~ **Demonstrated**
+   on 8 sampled candidates per case — and the lift over a random sample is **+0.089
+   [−0.059, +0.238]**, not distinguishable from zero. See
+   [`stageH_best_of_n.md`](../results/gpu_stage/stageH_best_of_n.md).
 3. The audit kappa from Phase 4.3 has not been run against a human-scored subset. Until it is,
    the label quality underpinning all of this is asserted rather than measured.
 

@@ -21,6 +21,7 @@ correction attached rather than quietly edited out — the sequence of reasoning
 | **G** | Can the label ask about *support* rather than bookkeeping? | Yes — semantic labels from structured fields, coverage 53% | [`stageG_efficacy_mtbbench.md`](stageG_efficacy_mtbbench.md) |
 | **F** | Is the bottleneck model capacity, or the labels? | **The labels.** +0.190 from the label, +0.032 from the model | [`stageF_modernbert.md`](stageF_modernbert.md) · [figure](stageF_figure.png) |
 | — | **Decision gate**: is the verifier usable as a reward signal? | **PASS** — 0.881 [0.798, 0.951], with a caveat | see below |
+| **H** | Does verifier-guided selection pick better traces? | **Not measurably** — +0.089 [−0.059, +0.238] | [`stageH_best_of_n.md`](stageH_best_of_n.md) |
 
 ## The thread, in order
 
@@ -143,10 +144,23 @@ The reward signal for any downstream RFT/DPO must therefore be described as: *a 
 step-verifier at 0.881 [0.798, 0.951] on hard-sampled policy traces, whose label is 65%
 tumour-type consistency.*
 
+## Stage H tempers the gate
+
+Stage F passed on **step-level** accuracy. Stage H then measured **trace-level** selection and
+found the Best-of-N lift over a random sample to be +0.089 **[−0.059, +0.238]** — the interval
+crosses zero. Step accuracy and ranking utility are different quantities, and only the first
+had been measured when the gate was set.
+
+The oracle ceiling is also low: even the best of 8 candidates has only **0.458** of its steps
+judged sound. Since RFT trains a policy to imitate its own selected traces, that ceiling bounds
+what rejection-sampling fine-tuning could achieve before any training runs.
+
 ## Still open
 
 - **RFT / DPO** (`train_rft`, `train_dpo` in `training/posttrain.py`) remain stubs. The gate
-  permits them; they are not run.
+  permits them, but stage H argues a baseline arm should come first, and that DPO is better
+  placed than RFT because it extracts signal from the best/worst *contrast* (0.458 vs 0.000)
+  rather than from the winner's absolute quality.
 - **No baseline arm.** Phase 6's third honest limitation stands: nothing here can yet be called
   an improvement over an untrained policy.
 - **`disease_mismatch` conflates policy error with retrieval artifact.** Separating them is the
