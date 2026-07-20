@@ -1,0 +1,755 @@
+{
+ "run_at": "2026-07-20T19:57:32",
+ "seed": 17,
+ "source": "candidates.jsonl",
+ "n_cases": 50,
+ "note": "Best-of-N verifier trained on train cases only; the selection arm is therefore optimistic on train cases and honest on the 15 held out.",
+ "arms": {
+  "scaffold_deterministic": {
+   "guideline_concordance": {
+    "top1": {
+     "n": 50,
+     "rate": 0.96,
+     "ci95": [
+      0.9,
+      1.0
+     ]
+    },
+    "any_match": {
+     "n": 50,
+     "rate": 1.0,
+     "ci95": [
+      1.0,
+      1.0
+     ]
+    },
+    "skipped_unlabelled": 0
+   },
+   "molecular_interpretation_accuracy": {
+    "agreement": {
+     "n": 50,
+     "rate": 0.72,
+     "ci95": [
+      0.6,
+      0.84
+     ]
+    },
+    "n_actionable_cases": 12,
+    "recommended_when_actionable": 12,
+    "abstained_when_actionable": 0,
+    "recommended_when_not_actionable": 14,
+    "abstained_when_not_actionable": 24
+   },
+   "reasoning_step_accuracy": {
+    "step_soundness": {
+     "n": 0,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.0
+     ]
+    },
+    "unlabelled_steps": 298
+   },
+   "tool_use_reliability": {
+    "n_calls": 223,
+    "success": {
+     "n": 223,
+     "rate": 1.0,
+     "ci95": [
+      1.0,
+      1.0
+     ]
+    },
+    "median_latency_ms": 0.08,
+    "redundant_calls": 90,
+    "successful_but_empty": 72,
+    "errors": []
+   },
+   "citation_grounding": {
+    "n_citations": 226,
+    "resolved": {
+     "n": 226,
+     "rate": 1.0,
+     "ci95": [
+      1.0,
+      1.0
+     ]
+    }
+   },
+   "calibration": {
+    "n": 50,
+    "brier": {
+     "value": 0.1405,
+     "ci95": [
+      0.1041,
+      0.1778
+     ]
+    },
+    "ece": 0.3044,
+    "reliability_curve": [
+     {
+      "bin": [
+       0.0,
+       0.2
+      ],
+      "n": 0
+     },
+     {
+      "bin": [
+       0.2,
+       0.4
+      ],
+      "n": 0
+     },
+     {
+      "bin": [
+       0.4,
+       0.6
+      ],
+      "n": 24,
+      "mean_confidence": 0.5,
+      "accuracy": 1.0
+     },
+     {
+      "bin": [
+       0.6,
+       0.8
+      ],
+      "n": 2,
+      "mean_confidence": 0.64,
+      "accuracy": 0.0
+     },
+     {
+      "bin": [
+       0.8,
+       1.0
+      ],
+      "n": 24,
+      "mean_confidence": 0.9192,
+      "accuracy": 1.0
+     }
+    ]
+   },
+   "deferral_curve": {
+    "n": 50,
+    "points": [
+     {
+      "threshold": 0.0,
+      "coverage": 1.0,
+      "accuracy": 0.96,
+      "accuracy_ci95": [
+       0.9,
+       1.0
+      ],
+      "n": 50
+     },
+     {
+      "threshold": 0.3,
+      "coverage": 1.0,
+      "accuracy": 0.96,
+      "accuracy_ci95": [
+       0.9,
+       1.0
+      ],
+      "n": 50
+     },
+     {
+      "threshold": 0.5,
+      "coverage": 1.0,
+      "accuracy": 0.96,
+      "accuracy_ci95": [
+       0.9,
+       1.0
+      ],
+      "n": 50
+     },
+     {
+      "threshold": 0.7,
+      "coverage": 0.48,
+      "accuracy": 1.0,
+      "accuracy_ci95": [
+       1.0,
+       1.0
+      ],
+      "n": 24
+     },
+     {
+      "threshold": 0.9,
+      "coverage": 0.28,
+      "accuracy": 1.0,
+      "accuracy_ci95": [
+       1.0,
+       1.0
+      ],
+      "n": 14
+     }
+    ],
+    "accuracy_monotone_in_threshold": true
+   },
+   "information_gathering": {
+    "n": 50,
+    "n_correct": 48,
+    "n_incorrect": 2,
+    "evidence_when_correct": [
+     4.0,
+     12.0,
+     11.0,
+     13.0,
+     14.0,
+     5.0,
+     4.0,
+     11.0,
+     6.0,
+     2.0,
+     4.0,
+     2.0,
+     7.0,
+     3.0,
+     4.0,
+     6.0,
+     12.0,
+     4.0,
+     10.0,
+     2.0,
+     3.0,
+     12.0,
+     3.0,
+     10.0,
+     4.0,
+     26.0,
+     8.0,
+     10.0,
+     2.0,
+     10.0,
+     2.0,
+     2.0,
+     7.0,
+     2.0,
+     2.0,
+     11.0,
+     4.0,
+     8.0,
+     12.0,
+     4.0,
+     3.0,
+     3.0,
+     20.0,
+     3.0,
+     9.0,
+     2.0,
+     2.0,
+     2.0
+    ],
+    "evidence_when_incorrect": [
+     11.0,
+     16.0
+    ],
+    "mean_evidence_when_correct": 6.708,
+    "mean_evidence_when_incorrect": 13.5,
+    "pointbiserial_r": -0.256,
+    "p_value": 0.0727,
+    "interpretation": "gathering more evidence does not track with being correct"
+   },
+   "n_abstained": 24
+  },
+  "policy_untrained_1sample": {
+   "guideline_concordance": {
+    "top1": {
+     "n": 50,
+     "rate": 0.06,
+     "ci95": [
+      0.0,
+      0.14
+     ]
+    },
+    "any_match": {
+     "n": 50,
+     "rate": 0.08,
+     "ci95": [
+      0.02,
+      0.16
+     ]
+    },
+    "skipped_unlabelled": 0
+   },
+   "molecular_interpretation_accuracy": {
+    "agreement": {
+     "n": 50,
+     "rate": 0.68,
+     "ci95": [
+      0.54,
+      0.82
+     ]
+    },
+    "n_actionable_cases": 12,
+    "recommended_when_actionable": 7,
+    "abstained_when_actionable": 5,
+    "recommended_when_not_actionable": 11,
+    "abstained_when_not_actionable": 27
+   },
+   "reasoning_step_accuracy": {
+    "step_soundness": {
+     "n": 141,
+     "rate": 0.1844,
+     "ci95": [
+      0.1277,
+      0.2482
+     ]
+    },
+    "unlabelled_steps": 0
+   },
+   "tool_use_reliability": {
+    "n_calls": 0,
+    "success": {
+     "n": 0,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.0
+     ]
+    },
+    "note": "no tool calls logged"
+   },
+   "citation_grounding": {
+    "n_citations": 253,
+    "resolved": {
+     "n": 253,
+     "rate": 1.0,
+     "ci95": [
+      1.0,
+      1.0
+     ]
+    }
+   },
+   "calibration": {
+    "n": 43,
+    "brier": {
+     "value": 0.3324,
+     "ci95": [
+      0.2331,
+      0.4326
+     ]
+    },
+    "ece": 0.4244,
+    "reliability_curve": [
+     {
+      "bin": [
+       0.0,
+       0.2
+      ],
+      "n": 15,
+      "mean_confidence": 0.0267,
+      "accuracy": 0.0
+     },
+     {
+      "bin": [
+       0.2,
+       0.4
+      ],
+      "n": 2,
+      "mean_confidence": 0.25,
+      "accuracy": 0.0
+     },
+     {
+      "bin": [
+       0.4,
+       0.6
+      ],
+      "n": 3,
+      "mean_confidence": 0.4667,
+      "accuracy": 0.0
+     },
+     {
+      "bin": [
+       0.6,
+       0.8
+      ],
+      "n": 7,
+      "mean_confidence": 0.7214,
+      "accuracy": 0.1429
+     },
+     {
+      "bin": [
+       0.8,
+       1.0
+      ],
+      "n": 16,
+      "mean_confidence": 0.8688,
+      "accuracy": 0.125
+     }
+    ]
+   },
+   "deferral_curve": {
+    "n": 43,
+    "points": [
+     {
+      "threshold": 0.0,
+      "coverage": 1.0,
+      "accuracy": 0.0698,
+      "accuracy_ci95": [
+       0.0,
+       0.1628
+      ],
+      "n": 43
+     },
+     {
+      "threshold": 0.3,
+      "coverage": 0.6047,
+      "accuracy": 0.1154,
+      "accuracy_ci95": [
+       0.0,
+       0.2308
+      ],
+      "n": 26
+     },
+     {
+      "threshold": 0.5,
+      "coverage": 0.5814,
+      "accuracy": 0.12,
+      "accuracy_ci95": [
+       0.0,
+       0.24
+      ],
+      "n": 25
+     },
+     {
+      "threshold": 0.7,
+      "coverage": 0.5116,
+      "accuracy": 0.1364,
+      "accuracy_ci95": [
+       0.0,
+       0.3182
+      ],
+      "n": 22
+     },
+     {
+      "threshold": 0.9,
+      "coverage": 0.1395,
+      "accuracy": 0.3333,
+      "accuracy_ci95": [
+       0.0,
+       0.6667
+      ],
+      "n": 6
+     }
+    ],
+    "accuracy_monotone_in_threshold": true
+   },
+   "information_gathering": {
+    "n": 50,
+    "n_correct": 3,
+    "n_incorrect": 47,
+    "evidence_when_correct": [
+     5.0,
+     8.0,
+     5.0
+    ],
+    "evidence_when_incorrect": [
+     2.0,
+     5.0,
+     5.0,
+     4.0,
+     4.0,
+     2.0,
+     4.0,
+     4.0,
+     4.0,
+     3.0,
+     3.0,
+     5.0,
+     3.0,
+     2.0,
+     4.0,
+     4.0,
+     6.0,
+     5.0,
+     7.0,
+     2.0,
+     2.0,
+     3.0,
+     2.0,
+     5.0,
+     3.0,
+     4.0,
+     2.0,
+     4.0,
+     2.0,
+     2.0,
+     3.0,
+     2.0,
+     6.0,
+     3.0,
+     4.0,
+     5.0,
+     3.0,
+     5.0,
+     2.0,
+     2.0,
+     4.0,
+     8.0,
+     5.0,
+     2.0,
+     1.0,
+     1.0,
+     1.0
+    ],
+    "mean_evidence_when_correct": 6.0,
+    "mean_evidence_when_incorrect": 3.489,
+    "pointbiserial_r": 0.3569,
+    "p_value": 0.0109,
+    "interpretation": "more evidence gathered tracks with being correct"
+   },
+   "n_abstained": 31
+  },
+  "policy_untrained_best_of_8": {
+   "guideline_concordance": {
+    "top1": {
+     "n": 50,
+     "rate": 0.1,
+     "ci95": [
+      0.02,
+      0.18
+     ]
+    },
+    "any_match": {
+     "n": 50,
+     "rate": 0.12,
+     "ci95": [
+      0.04,
+      0.22
+     ]
+    },
+    "skipped_unlabelled": 0
+   },
+   "molecular_interpretation_accuracy": {
+    "agreement": {
+     "n": 50,
+     "rate": 0.7,
+     "ci95": [
+      0.58,
+      0.84
+     ]
+    },
+    "n_actionable_cases": 12,
+    "recommended_when_actionable": 12,
+    "abstained_when_actionable": 0,
+    "recommended_when_not_actionable": 15,
+    "abstained_when_not_actionable": 23
+   },
+   "reasoning_step_accuracy": {
+    "step_soundness": {
+     "n": 127,
+     "rate": 0.2677,
+     "ci95": [
+      0.189,
+      0.3465
+     ]
+    },
+    "unlabelled_steps": 0
+   },
+   "tool_use_reliability": {
+    "n_calls": 0,
+    "success": {
+     "n": 0,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.0
+     ]
+    },
+    "note": "no tool calls logged"
+   },
+   "citation_grounding": {
+    "n_citations": 242,
+    "resolved": {
+     "n": 242,
+     "rate": 1.0,
+     "ci95": [
+      1.0,
+      1.0
+     ]
+    }
+   },
+   "calibration": {
+    "n": 40,
+    "brier": {
+     "value": 0.3626,
+     "ci95": [
+      0.2546,
+      0.4677
+     ]
+    },
+    "ece": 0.4475,
+    "reliability_curve": [
+     {
+      "bin": [
+       0.0,
+       0.2
+      ],
+      "n": 12,
+      "mean_confidence": 0.025,
+      "accuracy": 0.0
+     },
+     {
+      "bin": [
+       0.2,
+       0.4
+      ],
+      "n": 2,
+      "mean_confidence": 0.275,
+      "accuracy": 0.0
+     },
+     {
+      "bin": [
+       0.4,
+       0.6
+      ],
+      "n": 2,
+      "mean_confidence": 0.5,
+      "accuracy": 0.0
+     },
+     {
+      "bin": [
+       0.6,
+       0.8
+      ],
+      "n": 6,
+      "mean_confidence": 0.7167,
+      "accuracy": 0.0
+     },
+     {
+      "bin": [
+       0.8,
+       1.0
+      ],
+      "n": 18,
+      "mean_confidence": 0.875,
+      "accuracy": 0.2222
+     }
+    ]
+   },
+   "deferral_curve": {
+    "n": 40,
+    "points": [
+     {
+      "threshold": 0.0,
+      "coverage": 1.0,
+      "accuracy": 0.1,
+      "accuracy_ci95": [
+       0.025,
+       0.2
+      ],
+      "n": 40
+     },
+     {
+      "threshold": 0.3,
+      "coverage": 0.675,
+      "accuracy": 0.1481,
+      "accuracy_ci95": [
+       0.037,
+       0.2963
+      ],
+      "n": 27
+     },
+     {
+      "threshold": 0.5,
+      "coverage": 0.65,
+      "accuracy": 0.1538,
+      "accuracy_ci95": [
+       0.0385,
+       0.3077
+      ],
+      "n": 26
+     },
+     {
+      "threshold": 0.7,
+      "coverage": 0.575,
+      "accuracy": 0.1739,
+      "accuracy_ci95": [
+       0.0435,
+       0.3478
+      ],
+      "n": 23
+     },
+     {
+      "threshold": 0.9,
+      "coverage": 0.175,
+      "accuracy": 0.2857,
+      "accuracy_ci95": [
+       0.0,
+       0.5714
+      ],
+      "n": 7
+     }
+    ],
+    "accuracy_monotone_in_threshold": true
+   },
+   "information_gathering": {
+    "n": 50,
+    "n_correct": 5,
+    "n_incorrect": 45,
+    "evidence_when_correct": [
+     5.0,
+     6.0,
+     2.0,
+     5.0,
+     3.0
+    ],
+    "evidence_when_incorrect": [
+     6.0,
+     7.0,
+     3.0,
+     6.0,
+     6.0,
+     6.0,
+     5.0,
+     1.0,
+     2.0,
+     1.0,
+     4.0,
+     3.0,
+     2.0,
+     2.0,
+     4.0,
+     2.0,
+     3.0,
+     5.0,
+     1.0,
+     2.0,
+     3.0,
+     2.0,
+     5.0,
+     7.0,
+     3.0,
+     3.0,
+     0.0,
+     4.0,
+     0.0,
+     3.0,
+     3.0,
+     6.0,
+     3.0,
+     4.0,
+     3.0,
+     1.0,
+     2.0,
+     1.0,
+     2.0,
+     8.0,
+     2.0,
+     2.0,
+     5.0,
+     1.0,
+     1.0
+    ],
+    "mean_evidence_when_correct": 4.2,
+    "mean_evidence_when_incorrect": 3.222,
+    "pointbiserial_r": 0.1501,
+    "p_value": 0.298,
+    "interpretation": "more evidence gathered tracks with being correct"
+   },
+   "n_abstained": 23
+  }
+ }
+}

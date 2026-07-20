@@ -107,8 +107,11 @@ about itself. What remains is scoped, dated backlog:
   definition that the abstention fix (below) showed disagrees with the guideline specialist's own
   evidence base on 14/50 cases.
 - **The Phase 4.3 human audit kappa**, currently asserted rather than measured.
-- **A baseline arm** (untrained policy or frontier model), so the headline numbers can be called
-  an improvement over something.
+~~- **A baseline arm** (untrained policy or frontier model)~~ — done: the untrained Qwen2.5-3B
+  arm is measured in [`results/gpu_stage/stageI_baseline.md`](results/gpu_stage/stageI_baseline.md).
+  Its main finding is that **guideline concordance cannot fairly referee that comparison** —
+  the gold derives from the scaffold's own retrieval corpus and is scored by exact string match.
+  On the less circular metric the two arms are nearly level (0.720 vs 0.680).
 
 ~~The abstention fix for the 0/50 finding~~ — done: a strict-inequality tie at the abstain
 threshold, fixed in one line, molecular interpretation agreement 0.24 → 0.72. See the

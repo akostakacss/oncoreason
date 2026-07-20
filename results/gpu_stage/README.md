@@ -22,6 +22,7 @@ correction attached rather than quietly edited out — the sequence of reasoning
 | **F** | Is the bottleneck model capacity, or the labels? | **The labels.** +0.190 from the label, +0.032 from the model | [`stageF_modernbert.md`](stageF_modernbert.md) · [figure](stageF_figure.png) |
 | — | **Decision gate**: is the verifier usable as a reward signal? | **PASS** — 0.881 [0.798, 0.951], with a caveat | see below |
 | **H** | Does verifier-guided selection pick better traces? | **Not measurably** — +0.089 [−0.059, +0.238] | [`stageH_best_of_n.md`](stageH_best_of_n.md) |
+| **I** | How does an untrained policy compare? | **The metric can't referee it** — level on the non-circular row | [`stageI_baseline.md`](stageI_baseline.md) |
 
 ## The thread, in order
 
@@ -161,8 +162,10 @@ what rejection-sampling fine-tuning could achieve before any training runs.
   permits them, but stage H argues a baseline arm should come first, and that DPO is better
   placed than RFT because it extracts signal from the best/worst *contrast* (0.458 vs 0.000)
   rather than from the winner's absolute quality.
-- **No baseline arm.** Phase 6's third honest limitation stands: nothing here can yet be called
-  an improvement over an untrained policy.
+- ~~**No baseline arm.**~~ Done in stage I. It found that guideline concordance cannot fairly
+  compare a deterministic scaffold with a generative policy, and that on the non-circular metric
+  the two are nearly level (0.720 vs 0.680). The strongest argument yet for MTBBench's
+  externally authored gold.
 - **`disease_mismatch` conflates policy error with retrieval artifact.** Separating them is the
   single highest-value fix to the label.
 - **One seed, 15 test cases.** No repeated splits; every interval here is wide.

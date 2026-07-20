@@ -100,8 +100,13 @@ as redundant; that definition is generous and should be tightened before it is q
 
 1. **The headline metric is circular** until MTBBench is wired in.
 2. **No human audit** has been run, so label quality is asserted, not measured.
-3. **No baseline comparison.** There is no untrained-policy or frontier-model arm yet, so none
-   of these numbers can be called an improvement over anything.
+3. ~~**No baseline comparison.**~~ **Done** — an untrained Qwen2.5-3B arm is measured in
+   [`stageI_baseline.md`](../results/gpu_stage/stageI_baseline.md). Guideline concordance reads
+   0.960 vs 0.060, but most of that gap is measurement: the gold derives from the same guideline
+   index the scaffold retrieves over, and free-text recommendations are scored by exact string
+   match. On molecular interpretation agreement — the metric not derived from that index — the
+   arms are nearly level, **0.720 vs 0.680**. The baseline's real contribution is showing that
+   this metric cannot referee scaffold-vs-policy.
 4. **n = 50, single tumour type, single timepoint.** No longitudinal evaluation yet, though the
    schema now supports it.
 
