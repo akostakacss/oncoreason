@@ -1,0 +1,15 @@
+{
+  "id": "ta1010/oncoreason-prm-modernbert",
+  "title": "oncoreason prm modernbert",
+  "code_file": "prm_modernbert.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": true,
+  "enable_gpu": true,
+  "machine_shape": "NvidiaTeslaT4",
+  "enable_internet": true,
+  "model_sources": [],
+  "dataset_sources": ["ta1010/oncoreason-data"],
+  "competition_sources": [],
+  "kernel_sources": ["ta1010/oncoreason-policy-sampling-hard"]
+}

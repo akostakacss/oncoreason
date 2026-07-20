@@ -1,8 +1,12 @@
 #!/usr/bin/env python3
-"""Pull the latest Kaggle kernel output and save it durably under runs/.
+"""Pull a Kaggle kernel's output and archive it durably under runs/.
 
-Usage:  python scripts/pull_run.py <label>
-Writes runs/<timestamp>-<label>.md (readable) and .log (raw), and prints a summary.
+Usage:  python scripts/pull_run.py <stage> <label>
+
+Writes runs/<timestamp>-<label>.md (readable), .log (raw), and — for training stages —
+runs/<timestamp>-<label>-artifacts/ holding every non-log file the kernel produced
+(adapters, checkpoints, sampled traces). Earlier versions downloaded those into a
+tempdir and discarded them, so a multi-hour training run survived only as a transcript.
 """
 import datetime
 import glob
@@ -13,10 +17,16 @@ import subprocess
 import sys
 import tempfile
 
-KERNEL = "ta1010/gate1-smoke-test"
-label = sys.argv[1] if len(sys.argv) > 1 else "run"
+if len(sys.argv) < 3:
+    sys.exit("usage: python scripts/pull_run.py <stage> <label>")
+stage, label = sys.argv[1], sys.argv[2]
 
 repo = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+meta_path = os.path.join(repo, "notebooks", stage, "kernel-metadata.json")
+if not os.path.exists(meta_path):
+    sys.exit(f"no kernel-metadata.json for stage {stage!r} ({meta_path})")
+KERNEL = json.load(open(meta_path))["id"]
+
 runs = os.path.join(repo, "runs")
 os.makedirs(runs, exist_ok=True)
 
@@ -42,7 +52,8 @@ for ln in open(raw):
     for g in ("Tesla T4", "Tesla P100"):
         if g in d:
             gpu.add(g)
-    for e in ("AcceleratorError", "no kernel image", "Traceback (most recent call last)"):
+    for e in ("AcceleratorError", "no kernel image", "Traceback (most recent call last)",
+              "CUDA out of memory"):
         if e in d:
             errs.add(e)
 text = "".join(stdout)
@@ -50,12 +61,31 @@ text = "".join(stdout)
 ts = datetime.datetime.now().strftime("%Y%m%d-%H%M")
 base = os.path.join(runs, f"{ts}-{label}")
 shutil.copy(raw, base + ".log")
+
+# Everything the kernel produced other than the run log: model adapters, sampled traces,
+# reports. These are the actual deliverable of a training stage.
+artifacts = []
+art_dir = base + "-artifacts"
+for path in sorted(glob.glob(os.path.join(tmp, "**", "*"), recursive=True)):
+    if os.path.isdir(path) or path == raw:
+        continue
+    rel = os.path.relpath(path, tmp)
+    dest = os.path.join(art_dir, rel)
+    os.makedirs(os.path.dirname(dest), exist_ok=True)
+    shutil.copy2(path, dest)
+    artifacts.append((rel, os.path.getsize(path)))
+
 with open(base + ".md", "w") as f:
     f.write(f"# Kaggle run — {label}\n\n")
+    f.write(f"- stage: `{stage}`\n")
     f.write(f"- kernel: `{KERNEL}`  ·  https://www.kaggle.com/code/{KERNEL}\n")
     f.write(f"- GPU: {', '.join(sorted(gpu)) or 'unknown'}\n")
-    f.write(f"- errors: {', '.join(sorted(errs)) or 'none'}\n\n")
-    f.write("## stdout\n\n```\n" + text.strip() + "\n```\n")
+    f.write(f"- errors: {', '.join(sorted(errs)) or 'none'}\n")
+    if artifacts:
+        f.write(f"\n## artifacts ({len(artifacts)})\n\n")
+        for rel, size in artifacts:
+            f.write(f"- `{rel}` — {size / 1e6:.2f} MB\n")
+    f.write("\n## stdout\n\n```\n" + text.strip() + "\n```\n")
 
 # plain-text of just the model's case outputs
 i = text.find("CASE 1")
@@ -78,6 +108,9 @@ with open(index, "a") as f:
 
 print("saved:", base + ".md")
 print("saved:", base + "-cases.txt")
+if artifacts:
+    print(f"saved: {art_dir}/ ({len(artifacts)} files, "
+          f"{sum(s for _, s in artifacts) / 1e6:.1f} MB)")
 print("indexed in:", index)
 print("GPU:", ", ".join(sorted(gpu)) or "unknown", "| errors:", ", ".join(sorted(errs)) or "none")
 print("---- head of stdout ----")

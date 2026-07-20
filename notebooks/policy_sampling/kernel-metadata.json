@@ -1,0 +1,15 @@
+{
+  "id": "ta1010/oncoreason-policy-sampling",
+  "title": "oncoreason policy sampling",
+  "code_file": "policy_sampling.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": true,
+  "enable_gpu": true,
+  "machine_shape": "NvidiaTeslaT4",
+  "enable_internet": true,
+  "model_sources": ["qwen-lm/qwen2.5/transformers/3b-instruct/1"],
+  "dataset_sources": ["ta1010/oncoreason-data"],
+  "competition_sources": [],
+  "kernel_sources": []
+}

@@ -1,0 +1,149 @@
+[{"stream_name":"stderr","time":6.75048303,"data":"/usr/local/lib/python3.12/dist-packages/nbformat/__init__.py:96: MissingIDFieldWarning: Cell is missing an id field, this will become a hard error in future nbformat versions. You may want to use `normalize()` on your notebooks before validations (available since nbformat 5.1.4). Previous versions of nbformat are fixing this issue transparently, and will stop doing so in the future.\n"}
+,{"stream_name":"stderr","time":6.750581776,"data":"  validate(nb)\n"}
+,{"stream_name":"stderr","time":7.661625981,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":7.661658031,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":7.66166533,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":7.661671307,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":8.264371853,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":8.264399528,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":8.264405888,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":8.264411187,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stdout","time":9.44448063,"data":"Mon Jul 20 12:55:54 2026       \r\n"}
+,{"stream_name":"stdout","time":9.444521138,"data":"+-----------------------------------------------------------------------------------------+\r\n"}
+,{"stream_name":"stdout","time":9.444528275,"data":"| NVIDIA-SMI 580.159.04             Driver Version: 580.159.04     CUDA Version: 13.0     |\r\n"}
+,{"stream_name":"stdout","time":9.444533858,"data":"+-----------------------------------------+------------------------+----------------------+\r\n"}
+,{"stream_name":"stdout","time":9.444538511,"data":"| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |\r\n"}
+,{"stream_name":"stdout","time":9.444542923,"data":"| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |\r\n"}
+,{"stream_name":"stdout","time":9.444547334,"data":"|                                         |                        |               MIG M. |\r\n"}
+,{"stream_name":"stdout","time":9.444551915,"data":"|=========================================+========================+======================|\r\n"}
+,{"stream_name":"stdout","time":9.494400714,"data":"|   0  Tesla T4                       Off |   00000000:00:04.0 Off |                    0 |\r\n"}
+,{"stream_name":"stdout","time":9.494427044,"data":"| N/A   47C    P8             10W /   70W |       0MiB /  15360MiB |      0%      Default |\r\n"}
+,{"stream_name":"stdout","time":9.494434791,"data":"|                                         |                        |                  N/A |\r\n"}
+,{"stream_name":"stdout","time":9.49444178,"data":"+-----------------------------------------+------------------------+----------------------+\r\n"}
+,{"stream_name":"stdout","time":9.49444887,"data":"|   1  Tesla T4                       Off |   00000000:00:05.0 Off |                    0 |\r\n"}
+,{"stream_name":"stdout","time":9.494455885,"data":"| N/A   47C    P8             10W /   70W |       0MiB /  15360MiB |      0%      Default |\r\n"}
+,{"stream_name":"stdout","time":9.494463108,"data":"|                                         |                        |                  N/A |\r\n"}
+,{"stream_name":"stdout","time":9.494479864,"data":"+-----------------------------------------+------------------------+----------------------+\r\n"}
+,{"stream_name":"stdout","time":9.49448487,"data":"\r\n"}
+,{"stream_name":"stdout","time":9.494490282,"data":"+-----------------------------------------------------------------------------------------+\r\n"}
+,{"stream_name":"stdout","time":9.494495566,"data":"| Processes:                                                                              |\r\n"}
+,{"stream_name":"stdout","time":9.494501155,"data":"|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |\r\n"}
+,{"stream_name":"stdout","time":9.494506307,"data":"|        ID   ID                                                               Usage      |\r\n"}
+,{"stream_name":"stdout","time":9.494511603,"data":"|=========================================================================================|\r\n"}
+,{"stream_name":"stdout","time":9.494520081,"data":"|  No running processes found                                                             |\r\n"}
+,{"stream_name":"stdout","time":9.494525474,"data":"+-----------------------------------------------------------------------------------------+\r\n"}
+,{"stream_name":"stdout","time":26.433994571,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 389.2/389.2 kB 30.5 MB/s eta 0:00:00\r\n"}
+,{"stream_name":"stdout","time":26.434043622,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 516.0/516.0 kB 37.2 MB/s eta 0:00:00\r\n"}
+,{"stream_name":"stderr","time":26.578433414,"data":"Cloning into '/tmp/oncoreason'...\n"}
+,{"stream_name":"stderr","time":26.780518881,"data":"Cloning into '/tmp/oncoreason'...\n"}
+,{"stream_name":"stderr","time":26.780539321,"data":"\n"}
+,{"stream_name":"stderr","time":26.780545177,"data":"Cloning into '/tmp/oncoreason'...\n"}
+,{"stream_name":"stdout","time":27.45834432,"data":"/kaggle/input contains: ['datasets', 'models']\n"}
+,{"stream_name":"stdout","time":27.458373014,"data":"cases from: /kaggle/input/datasets/ta1010/oncoreason-data/cases | cache from: /kaggle/input/datasets/ta1010/oncoreason-data/cache\n"}
+,{"stream_name":"stdout","time":36.495266202,"data":"cases: 50\n"}
+,{"stream_name":"stdout","time":36.495304656,"data":"cached evidence files: 118\n"}
+,{"stream_name":"stdout","time":36.712814013,"data":"50 cases | evidence per case: min 3 mean 5.9 max 21 | 84 distinct ids\n"}
+,{"stream_name":"stdout","time":36.712839072,"data":"distractors per case: mean 3.8 | prompt pool mean 9.7\n"}
+,{"stream_name":"stdout","time":36.733295021,"data":"TUMOR TYPE: lung adenocarcinoma\n"}
+,{"stream_name":"stdout","time":36.733318885,"data":"STAGE: unknown\n"}
+,{"stream_name":"stdout","time":36.733324202,"data":"ALTERATIONS: EGFR L858R (mutation); EGFR L62R (mutation)\n"}
+,{"stream_name":"stdout","time":36.73332994,"data":"\n"}
+,{"stream_name":"stdout","time":36.733334779,"data":"EVIDENCE:\n"}
+,{"stream_name":"stdout","time":36.733339442,"data":"  guideline:gl-ret: RET fusion: selpercatinib or pralsetinib.\n"}
+,{"stream_name":"stdout","time":36.733344433,"data":"  guideline:gl-ntrk: NTRK fusion: larotrectinib or entrectinib.\n"}
+,{"stream_name":"stdout","time":36.733349056,"data":"  civic:EID2994: EGFR L858R: SUPPORTS SENSITIVITYRESPONSE to Erlotinib in Lung Non-small Cell Carcinoma (CIViC level A, rating 5)\n"}
+,{"stream_name":"stdout","time":36.733353788,"data":"  guideline:gl-nodriver-lusc: Squamous NSCLC without targetable driver: platinum-doublet chemotherapy +/- immunotherapy by PD-L1.\n"}
+,{"stream_name":"stdout","time":36.733368265,"data":"  civic:EID11691: ERBB2 S310F: SUPPORTS SENSITIVITYRESPONSE to Afatinib in Breast Cancer (CIViC level C, rating 2)\n"}
+,{"stream_name":"stdout","time":36.73337357,"data":"  civic:EID11239: EGFR L858R: SUPPORTS SENSITIVITYRESPONSE to Dacomitinib in Lung Non-small Cell Carcinoma (CIViC level A, rating 5)\n"}
+,{"stream_name":"stdout","time":36.733377326,"data":"  clinvar:VCV000016609: NM_005228.5(EGFR):c.2573T\u003eG (p.Leu858Arg): germline classification 'drug response' (reviewed by expert panel)\n"}
+,{"stream_name":"stdout","time":36.733382811,"data":"  civic:EID11219:\n"}
+,{"stream_name":"stderr","time":61.495213825,"data":"Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n"}
+,{"stream_name":"stderr","time":61.495248478,"data":"\n"}
+,{"stream_name":"stderr","time":61.49525433,"data":"Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n"}
+,{"stream_name":"stdout","time":61.541562067,"data":"loading Qwen/Qwen2.5-3B-Instruct\n"}
+,{"stream_name":"stderr","time":63.026988392,"data":"[transformers] `torch_dtype` is deprecated! Use `dtype` instead!\n"}
+,{"stream_name":"stderr","time":63.027016079,"data":"\n"}
+,{"stream_name":"stderr","time":63.027022077,"data":"[transformers] `torch_dtype` is deprecated! Use `dtype` instead!\n"}
+,{"stream_name":"stdout","time":93.003518147,"data":"loaded | Tesla T4 | 6.2 GB allocated\n"}
+,{"stream_name":"stdout","time":122.055541018,"data":"CASE 1/50 lusc_tcga_pan_can_atlas_2018:TCGA-85-A511-01  29.0s  parsed 8/8\n"}
+,{"stream_name":"stdout","time":171.595632459,"data":"CASE 2/50 luad_tcga_pan_can_atlas_2018:TCGA-44-3396-01  49.5s  parsed 8/8\n"}
+,{"stream_name":"stdout","time":205.342048232,"data":"CASE 3/50 luad_tcga_pan_can_atlas_2018:TCGA-38-4627-01  33.7s  parsed 8/8\n"}
+,{"stream_name":"stdout","time":257.804164155,"data":"CASE 4/50 luad_tcga_pan_can_atlas_2018:TCGA-71-8520-01  52.5s  parsed 8/8\n"}
+,{"stream_name":"stdout","time":325.122202846,"data":"CASE 5/50 luad_tcga_pan_can_atlas_2018:TCGA-44-2656-01  67.3s  parsed 8/8\n"}
+,{"stream_name":"stdout","time":372.105734145,"data":"CASE 6/50 lusc_tcga_pan_can_atlas_2018:TCGA-18-3412-01  47.0s  parsed 8/8\n"}
+,{"stream_name":"stdout","time":419.534949679,"data":"CASE 7/50 lusc_tcga_pan_can_atlas_2018:TCGA-56-8201-01  47.4s  parsed 8/8\n"}
+,{"stream_name":"stdout","time":456.242862201,"data":"CASE 8/50 luad_tcga_pan_can_atlas_2018:TCGA-44-A47G-01  36.7s  parsed 8/8\n"}
+,{"stream_name":"stdout","time":533.923931032,"data":"CASE 9/50 lusc_tcga_pan_can_atlas_2018:TCGA-43-2581-01  77.7s  parsed 8/8\n"}
+,{"stream_name":"stdout","time":576.613084798,"data":"CASE 10/50 lusc_tcga_pan_can_atlas_2018:TCGA-96-7544-01  42.7s  parsed 8/8\n"}
+,{"stream_name":"stdout","time":611.140206212,"data":"CASE 11/50 lusc_tcga_pan_can_atlas_2018:TCGA-85-8666-01  34.5s  parsed 8/8\n"}
+,{"stream_name":"stdout","time":645.330309127,"data":"CASE 12/50 lusc_tcga_pan_can_atlas_2018:TCGA-85-8287-01  34.2s  parsed 8/8\n"}
+,{"stream_name":"stdout","time":685.61234445,"data":"CASE 13/50 lusc_tcga_pan_can_atlas_2018:TCGA-77-8009-01  40.3s  parsed 8/8\n"}
+,{"stream_name":"stdout","time":716.604199398,"data":"CASE 14/50 lusc_tcga_pan_can_atlas_2018:TCGA-60-2722-01  31.0s  parsed 8/8\n"}
+,{"stream_name":"stdout","time":764.952437242,"data":"CASE 15/50 lusc_tcga_pan_can_atlas_2018:TCGA-39-5021-01  48.3s  parsed 8/8\n"}
+,{"stream_name":"stdout","time":793.692197766,"data":"CASE 16/50 luad_tcga_pan_can_atlas_2018:TCGA-17-Z023-01  28.7s  parsed 8/8\n"}
+,{"stream_name":"stdout","time":846.62154536,"data":"CASE 17/50 luad_tcga_pan_can_atlas_2018:TCGA-17-Z048-01  52.9s  parsed 8/8\n"}
+,{"stream_name":"stdout","time":890.423355313,"data":"CASE 18/50 luad_tcga_pan_can_atlas_2018:TCGA-05-4418-01  43.8s  parsed 8/8\n"}
+,{"stream_name":"stdout","time":928.704275579,"data":"CASE 19/50 luad_tcga_pan_can_atlas_2018:TCGA-73-4676-01  38.3s  parsed 8/8\n"}
+,{"stream_name":"stdout","time":973.157547337,"data":"CASE 20/50 luad_tcga_pan_can_atlas_2018:TCGA-73-4662-01  44.4s  parsed 8/8\n"}
+,{"stream_name":"stdout","time":1052.704623691,"data":"CASE 21/50 lusc_tcga_pan_can_atlas_2018:TCGA-34-8454-01  79.5s  parsed 8/8\n"}
+,{"stream_name":"stdout","time":1085.698134136,"data":"CASE 22/50 lusc_tcga_pan_can_atlas_2018:TCGA-18-4083-01  33.0s  parsed 8/8\n"}
+,{"stream_name":"stdout","time":1111.754822006,"data":"CASE 23/50 lusc_tcga_pan_can_atlas_2018:TCGA-85-A53L-01  26.1s  parsed 8/8\n"}
+,{"stream_name":"stdout","time":1160.516596606,"data":"CASE 24/50 luad_tcga_pan_can_atlas_2018:TCGA-50-7109-01  48.7s  parsed 8/8\n"}
+,{"stream_name":"stdout","time":1193.184070004,"data":"CASE 25/50 lusc_tcga_pan_can_atlas_2018:TCGA-66-2788-01  32.7s  parsed 8/8\n"}
+,{"stream_name":"stdout","time":1240.170213164,"data":"CASE 26/50 luad_tcga_pan_can_atlas_2018:TCGA-55-A494-01  47.0s  parsed 8/8\n"}
+,{"stream_name":"stdout","time":1269.632450611,"data":"CASE 27/50 lusc_tcga_pan_can_atlas_2018:TCGA-39-5034-01  29.5s  parsed 8/8\n"}
+,{"stream_name":"stdout","time":1361.870468376,"data":"CASE 28/50 lusc_tcga_pan_can_atlas_2018:TCGA-52-7812-01  92.2s  parsed 8/8\n"}
+,{"stream_name":"stdout","time":1399.36164843,"data":"CASE 29/50 luad_tcga_pan_can_atlas_2018:TCGA-97-7553-01  37.5s  parsed 8/8\n"}
+,{"stream_name":"stdout","time":1439.79044878,"data":"CASE 30/50 lusc_tcga_pan_can_atlas_2018:TCGA-85-8072-01  40.4s  parsed 8/8\n"}
+,{"stream_name":"stdout","time":1465.678803492,"data":"CASE 31/50 lusc_tcga_pan_can_atlas_2018:TCGA-34-2605-01  25.9s  parsed 8/8\n"}
+,{"stream_name":"stdout","time":1514.026145848,"data":"CASE 32/50 luad_tcga_pan_can_atlas_2018:TCGA-86-8076-01  48.3s  parsed 8/8\n"}
+,{"stream_name":"stdout","time":1545.373574269,"data":"CASE 33/50 lusc_tcga_pan_can_atlas_2018:TCGA-56-8307-01  31.3s  parsed 8/8\n"}
+,{"stream_name":"stdout","time":1583.012207555,"data":"CASE 34/50 luad_tcga_pan_can_atlas_2018:TCGA-05-4430-01  37.6s  parsed 8/8\n"}
+,{"stream_name":"stdout","time":1634.422206901,"data":"CASE 35/50 lusc_tcga_pan_can_atlas_2018:TCGA-39-5011-01  51.4s  parsed 8/8\n"}
+,{"stream_name":"stdout","time":1684.79564921,"data":"CASE 36/50 luad_tcga_pan_can_atlas_2018:TCGA-NJ-A4YQ-01  50.4s  parsed 8/8\n"}
+,{"stream_name":"stdout","time":1719.986313299,"data":"CASE 37/50 lusc_tcga_pan_can_atlas_2018:TCGA-85-7950-01  35.2s  parsed 8/8\n"}
+,{"stream_name":"stdout","time":1763.602693664,"data":"CASE 38/50 luad_tcga_pan_can_atlas_2018:TCGA-44-7672-01  43.6s  parsed 8/8\n"}
+,{"stream_name":"stdout","time":1824.853240032,"data":"CASE 39/50 luad_tcga_pan_can_atlas_2018:TCGA-69-7979-01  61.2s  parsed 8/8\n"}
+,{"stream_name":"stdout","time":1861.486303024,"data":"CASE 40/50 luad_tcga_pan_can_atlas_2018:TCGA-78-7150-01  36.6s  parsed 8/8\n"}
+,{"stream_name":"stdout","time":1918.096732969,"data":"CASE 41/50 luad_tcga_pan_can_atlas_2018:TCGA-55-7911-01  56.6s  parsed 8/8\n"}
+,{"stream_name":"stdout","time":1958.330849139,"data":"CASE 42/50 luad_tcga_pan_can_atlas_2018:TCGA-49-4487-01  40.2s  parsed 8/8\n"}
+,{"stream_name":"stdout","time":1983.599134838,"data":"CASE 43/50 lusc_tcga_pan_can_atlas_2018:TCGA-56-7823-01  25.3s  parsed 8/8\n"}
+,{"stream_name":"stdout","time":2016.36535612,"data":"CASE 44/50 lusc_tcga_pan_can_atlas_2018:TCGA-66-2755-01  32.8s  parsed 8/8\n"}
+,{"stream_name":"stdout","time":2085.831840886,"data":"CASE 45/50 luad_tcga_pan_can_atlas_2018:TCGA-78-7167-01  69.5s  parsed 8/8\n"}
+,{"stream_name":"stdout","time":2111.407901946,"data":"CASE 46/50 luad_tcga_pan_can_atlas_2018:TCGA-55-8507-01  25.6s  parsed 8/8\n"}
+,{"stream_name":"stdout","time":2165.153883533,"data":"CASE 47/50 luad_tcga_pan_can_atlas_2018:TCGA-55-7913-01  53.7s  parsed 8/8\n"}
+,{"stream_name":"stdout","time":2191.624951105,"data":"CASE 48/50 luad_tcga_pan_can_atlas_2018:TCGA-MP-A4SV-01  26.5s  parsed 8/8\n"}
+,{"stream_name":"stdout","time":2236.788521214,"data":"CASE 49/50 lusc_tcga_pan_can_atlas_2018:TCGA-18-5592-01  45.2s  parsed 8/8\n"}
+,{"stream_name":"stdout","time":2266.897627059,"data":"CASE 50/50 lusc_tcga_pan_can_atlas_2018:TCGA-85-8355-01  30.1s  parsed 8/8\n"}
+,{"stream_name":"stdout","time":2266.898433803,"data":"\n"}
+,{"stream_name":"stdout","time":2266.898454875,"data":"total 36.2 min\n"}
+,{"stream_name":"stdout","time":2266.94093771,"data":"n_samples                    400\n"}
+,{"stream_name":"stdout","time":2266.940957683,"data":"n_cases                      50\n"}
+,{"stream_name":"stdout","time":2266.940963841,"data":"samples_per_case             8\n"}
+,{"stream_name":"stdout","time":2266.94096938,"data":"temperature                  0.8\n"}
+,{"stream_name":"stdout","time":2266.940974076,"data":"model                        Qwen/Qwen2.5-3B-Instruct\n"}
+,{"stream_name":"stdout","time":2266.940979194,"data":"parse_rate                   1.0\n"}
+,{"stream_name":"stdout","time":2266.940983515,"data":"n_steps                      1236\n"}
+,{"stream_name":"stdout","time":2266.940987785,"data":"unsound_step_rate            0.557\n"}
+,{"stream_name":"stdout","time":2266.940992705,"data":"invented_id_steps            106\n"}
+,{"stream_name":"stdout","time":2266.940997038,"data":"off_case_id_steps            559\n"}
+,{"stream_name":"stdout","time":2266.941001377,"data":"uncited_steps                43\n"}
+,{"stream_name":"stdout","time":2266.941020046,"data":"abstain_rate                 0.598\n"}
+,{"stream_name":"stdout","time":2266.94102321,"data":"mean_within_case_spread      0.64\n"}
+,{"stream_name":"stdout","time":2266.941026231,"data":"mean_steps_per_sample        3.09\n"}
+,{"stream_name":"stdout","time":2266.941029165,"data":"\n"}
+,{"stream_name":"stdout","time":2266.94103629,"data":"--- examples of real ungrounded steps ---\n"}
+,{"stream_name":"stdout","time":2266.941039481,"data":"  [off-case civic:EID12534,civic:EID12703] The RET E775Sfs*5 mutation is present in the molecular profile, which is relevant for the RET driver\n"}
+,{"stream_name":"stdout","time":2266.941042738,"data":"  [off-case civic:EID12534,civic:EID12703] Given the presence of the RET mutation, selpercatinib or pralsetinib would be the most appropriate t\n"}
+,{"stream_name":"stdout","time":2266.941045886,"data":"  [off-case civic:EID12703,civic:EID228] The patient has RET E775Sfs*5 and TP53 C238F mutations. Given the available evidence, neither mutati\n"}
+,{"stream_name":"stdout","time":2266.941049071,"data":"  [off-case civic:EID12703] The presence of a TP53 C238F mutation may indicate potential resistance to certain therapies, but th\n"}
+,{"stream_name":"stdout","time":2266.941052244,"data":"  [off-case civic:EID12534,guideline:gl-ntrk,civic:EID12703] The patient has RET E775Sfs*5 (mutation) and TP53 C238F (mutation). Neither mutation is listed in th\n"}
+,{"stream_name":"stderr","time":2272.809458989,"data":"/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":2272.809492971,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":2272.973214032,"data":"/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":2272.973252189,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":2273.587151349,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":2273.912627068,"data":"[NbConvertApp] Writing 153927 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":2276.196298236,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":2277.053813767,"data":"[NbConvertApp] Writing 450976 bytes to __results__.html\n"}
+]

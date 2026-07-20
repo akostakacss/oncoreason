@@ -1,0 +1,45 @@
+{
+ "run_at": "2026-07-20T14:19:28",
+ "seed": 17,
+ "source": "candidates-relabelled.jsonl",
+ "n_test_cases": 15,
+ "n_real_train": 753,
+ "n_real_test": 323,
+ "n_synthetic_train": 388,
+ "arm_a_synthetic_to_real": {
+  "n": 323,
+  "tp": 173,
+  "fp": 124,
+  "tn": 16,
+  "fn": 10,
+  "accuracy": 0.585,
+  "balanced_accuracy": 0.53,
+  "recall_sound": 0.945,
+  "recall_unsound": 0.114,
+  "positive_rate": 0.567
+ },
+ "arm_b_real_to_real": {
+  "n": 323,
+  "tp": 170,
+  "fp": 4,
+  "tn": 136,
+  "fn": 13,
+  "accuracy": 0.947,
+  "balanced_accuracy": 0.95,
+  "recall_sound": 0.929,
+  "recall_unsound": 0.971,
+  "positive_rate": 0.567
+ },
+ "arm_a_on_synthetic_holdout": {
+  "n": 162,
+  "tp": 86,
+  "fp": 12,
+  "tn": 62,
+  "fn": 2,
+  "accuracy": 0.914,
+  "balanced_accuracy": 0.908,
+  "recall_sound": 0.977,
+  "recall_unsound": 0.838,
+  "positive_rate": 0.543
+ }
+}

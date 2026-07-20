@@ -1,0 +1,116 @@
+# The GPU stage — an audit trail
+
+Phase 5 shipped a process reward model with **0.914 held-out accuracy** and an honest caveat
+attached: the negatives were *constructed*, not observed, so the number described a
+semi-synthetic distribution and the verifier's accuracy on real policy output was
+**unmeasured**. This directory is the record of measuring it.
+
+Every stage here is reproducible from a committed script, every Kaggle run is archived under
+`runs/` with its stdout and artifacts, and every claim below links to the file that produced
+it. Where a prediction turned out wrong, the wrong prediction is left in place with the
+correction attached rather than quietly edited out — the sequence of reasoning is the point.
+
+## How to read this
+
+| Stage | Question | Verdict | Files |
+|---|---|---|---|
+| **B** | What does a real policy actually get wrong? | Real hallucinations exist, but 95% of them are "cited nothing" | [`stageB_sampling.md`](stageB_sampling.md) · [figure](stageB_figure.png) |
+| **C** | Does a verifier trained on constructed negatives transfer? | **No — 0.530 balanced accuracy, barely above chance** | [`stageC_prm_transfer.md`](stageC_prm_transfer.md) · [figure](stageC_figure.png) |
+| **D** | Does showing the model the evidence *text* fix it? | **No — it made every arm worse.** A prediction of mine that failed | [`stageD_featurize_ablation.md`](stageD_featurize_ablation.md) · [figure](stageD_figure.png) |
+| **E** | Can we make the negatives *hard* instead of merely real? | *(running)* | `stageE_hard_negatives.md` |
+| **F** | Is the bottleneck model capacity, or the labels? | *(pending)* | `stageF_modernbert.md` |
+| — | **Decision gate**: is the verifier usable as a reward signal at all? | *(pending)* | |
+
+## The thread, in order
+
+**1. The original problem.** A deterministic scaffold emits citations only from real
+retrievals, so it *cannot* produce an ungrounded step. Labelling its 50 traces gave 298 step
+examples of which 298 were sound — one class, nothing to train on. Phase 5's workaround was
+`supervision.mine_negatives`, which constructs unsound steps two ways: `strip` (remove the
+citations) and `swap` (replace them with ids from a different case).
+
+**2. Stage B — observe instead of construct.** Sampled 8 traces per case from
+Qwen2.5-3B-Instruct at temperature 0.8. Parse rate 1.000, within-case score spread 0.967 (so
+Best-of-N finally has candidates to rank — Phase 5 limitation #2). But two findings undercut
+the headline:
+
+- **481 of 507 unsound steps simply carry no citation.** Sampling made the negatives real
+  without making them *hard*; "cited nothing" is very nearly the signal `strip` already gave.
+- **Zero off-case citations in 1076 steps.** The `swap` strategy models a failure mode this
+  policy never exhibits, because it only ever sees one case's evidence and has no other
+  case's ids available to misuse. Half the synthetic training signal describes nothing real.
+
+**3. Stage C — measure the transfer.** Two verifiers, one shared case-level split, identical
+real test set; only the training distribution differs.
+
+| Arm | Balanced accuracy | Recall on unsound steps |
+|---|---|---|
+| trained on synthetic, tested on synthetic *(control)* | 0.908 | 0.838 |
+| **trained on synthetic, tested on real** | **0.530** | **0.114** |
+| trained on real, tested on real | 0.950 | 0.971 |
+
+The control reproduces Phase 5's published 0.914 exactly, confirming the setup is faithful
+before anything is concluded. Then: the verifier catches 84% of constructed negatives and
+**11% of real ones**. It learned the shape of the counterfactuals, not groundedness.
+
+Arm B's 0.950 is *not* evidence of a good verifier — stage B showed 95% of real negatives are
+uncited, so it is largely detecting an empty citation slot.
+
+**4. Stage D — the obvious fix, which failed.** Stage C's top recommendation was to inline
+what each cited record says, since `_featurize` passed `civic:EID2994` as an opaque token.
+Implemented it; it lowered balanced accuracy in all three arms and pushed the transfer arm to
+0.458, *below* chance.
+
+The diagnosis: judging support is **relational**, and bag-of-ngrams sees only the union of
+two word bags. CIViC summaries are formulaic, so a citation swapped from another case reads
+almost identically to the right one. The information is necessary but unusable without a
+model that can attend across the claim/evidence boundary.
+
+I had stated that recommendation with more confidence than the evidence supported. Two
+minutes of CPU reversed it. Left unmeasured it would have entered stage F as an assumption,
+where a null result would have been much harder to attribute.
+
+**5. Stage E — make the negatives hard.** Two changes to sampling: mix **distractor evidence
+from other cases** into each prompt pool (4 per case, shuffled so position does not leak), and
+make a citation **mandatory** on every step. Citing a distractor is a genuine error that
+remains mechanically detectable — and it resurrects the `swap` failure mode by finally giving
+the policy other cases' ids to misuse.
+
+**6. Stage F — capacity or labels?** With the feature string frozen at
+`step + ids + evidence text`, the only variable is the model class. ModernBERT-base against
+TF-IDF on identical inputs. If the transformer wins, cross-attention was the missing piece. If
+it does not, the bottleneck is the label distribution and no capacity fixes it.
+
+**7. The decision gate.** RFT and DPO use the verifier to select traces and build preference
+pairs. A verifier near chance yields a near-random reward signal, and training on it would
+produce an adapter whose numbers mean nothing. So stage F decides whether stages G/H run at
+all — and a "no" is a legitimate result to report, not a failure to hide.
+
+## Reproducing
+
+```bash
+# CPU — relabelling and the transfer measurement
+python scripts/relabel_candidates.py runs/<run>-artifacts/candidates.jsonl
+python scripts/stage_c_prm_real.py runs/<run>-artifacts/candidates-relabelled.jsonl
+python scripts/stage_c_prm_real.py <same> --with-evidence-text -o stageC_with_text.json
+
+# GPU — every Kaggle run goes through krun.sh so nothing is left unarchived
+scripts/krun.sh policy_sampling       b-n8-t08
+scripts/krun.sh policy_sampling_hard  e-hard-n8-t08
+scripts/krun.sh prm_modernbert        f-modernbert
+
+# figures (read the saved JSON, so they cannot drift from the results)
+python scripts/make_gpu_stage_figures.py
+```
+
+Notebooks are **generated** from `scripts/build_*_notebook.py` rather than hand-edited, so the
+sampling configuration lives in version control as readable Python. The builders refuse to
+write a notebook whose cells do not compile — added after the first stage B run died on the
+GPU from a cell-serialization bug that a naive local check had missed.
+
+## Run archive
+
+Every attempt, including the failures, is in `runs/INDEX.tsv`. The three failed stage B runs
+(nbformat cell serialization, Kaggle archive expansion, mount-path discovery) cost ~8 minutes
+of T4 time between them and are kept deliberately: a tooling record that only contains
+successes is not an audit trail.

@@ -1,0 +1,46 @@
+{
+ "run_at": "2026-07-20T14:34:27",
+ "seed": 17,
+ "source": "candidates-relabelled.jsonl",
+ "n_test_cases": 15,
+ "n_real_train": 753,
+ "n_real_test": 323,
+ "n_synthetic_train": 388,
+ "arm_a_synthetic_to_real": {
+  "n": 323,
+  "tp": 122,
+  "fp": 105,
+  "tn": 35,
+  "fn": 61,
+  "accuracy": 0.486,
+  "balanced_accuracy": 0.458,
+  "recall_sound": 0.667,
+  "recall_unsound": 0.25,
+  "positive_rate": 0.567
+ },
+ "arm_b_real_to_real": {
+  "n": 323,
+  "tp": 158,
+  "fp": 4,
+  "tn": 136,
+  "fn": 25,
+  "accuracy": 0.91,
+  "balanced_accuracy": 0.917,
+  "recall_sound": 0.863,
+  "recall_unsound": 0.971,
+  "positive_rate": 0.567
+ },
+ "arm_a_on_synthetic_holdout": {
+  "n": 162,
+  "tp": 84,
+  "fp": 12,
+  "tn": 62,
+  "fn": 4,
+  "accuracy": 0.901,
+  "balanced_accuracy": 0.896,
+  "recall_sound": 0.955,
+  "recall_unsound": 0.838,
+  "positive_rate": 0.543
+ },
+ "features": "step + ids + evidence text"
+}
